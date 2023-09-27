@@ -1,4 +1,3 @@
-
 # ECE Web Technologies Course Lab 3
 
 ## Introduction
