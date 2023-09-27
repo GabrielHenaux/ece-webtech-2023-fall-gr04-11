@@ -1,5 +1,3 @@
-# ece-webtech-2023-fall-gr04-11
-
 # ECE Web Technologies Course Lab 2
 
 Welcome to our lab 2 for the ECE Web Technologies Course! This README will guide you through the setup, installation, and basic usage of our lab. We've worked diligently to provide a smooth and intuitive experience.
