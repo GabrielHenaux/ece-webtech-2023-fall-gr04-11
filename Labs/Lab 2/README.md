@@ -8,7 +8,6 @@ Welcome to our lab 2 for the ECE Web Technologies Course! This README will guide
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [Authors](#authors)
-5. [License](#license)
 
 ## Requirements
 
@@ -26,7 +25,7 @@ npm install
 ```
 
 This will fetch and install all the required packages and dependencies that our project needs.
-Usage
+## Usage
 
 Starting the project is straightforward. Simply run:
 
@@ -35,7 +34,7 @@ npm start
 ```
 
 This command will initiate the server, and you should be able to access the application via your browser. Follow any on-screen instructions or console logs to navigate to the appropriate URL/port.
-Authors
+## Authors
 
 This project was collaboratively crafted by:
 
@@ -44,7 +43,4 @@ This project was collaboratively crafted by:
     Mathéo Gonnet
 
 Feel free to reach out to us if you have questions or suggestions!
-License
-
-This project is open source. Please refer to the LICENSE file in the repository for more information on its usage and distribution.
 
