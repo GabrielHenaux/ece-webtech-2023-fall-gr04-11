@@ -1,3 +1,4 @@
 .*
 /node_modules
 !.gitignore
+/Labs/Lab_3/node_modules
