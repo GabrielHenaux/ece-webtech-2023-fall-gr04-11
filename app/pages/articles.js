@@ -24,7 +24,7 @@ export default function Page() {
       <h1>
         Ferrari Articles
       </h1>
-      <p style={{ fontStyle: 'italic' }}>CEO true story about the best world car manufacturer</p>
+      <p className="italic font-bold">CEO true story about the best world car manufacturer</p>
       <ul>
         {articles.map(article => (
           <li key={article.slug}>
