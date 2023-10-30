@@ -7,14 +7,12 @@ import { useState } from 'react';
 
 export default function LoginPage() {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [data, setData] = useState({});
 
     const onSubmit = function (event) {
         event.preventDefault()
         const data = new FormData(event.target)
-        setUsername(data.get('username'));
-        setPassword(data.get('password'));
+
     }
 
     return (
@@ -26,21 +24,22 @@ export default function LoginPage() {
             <form onSubmit={onSubmit}>
                 <label>
                     Username:
-                    <input type="text" name='username' />
+                    <input type="text" name='username' value={data.username} onChange={event => setData({username: event.target.value})}/>
                 </label>
                 <br/>
                 <label>
                     Password:
-                    <input type="password" name='password' />
+                    <input type="password" name='password' value={data.password} onChange={event => setData({password: event.target.value})}/>
                 </label>
                 <br/>
                 <button type="submit">Submit</button>
             </form>
-            <p>Username: {username}</p>
-            <p>Password: {password}</p>
+            <p>Username: {data.username}</p>
+            <p>Password: {data.password}</p>
         </Layout>
 
-    );
+    );        setUsername(data.get('username'));
+    setPassword(data.get('password'));
 
 }
 
