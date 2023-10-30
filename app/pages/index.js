@@ -31,6 +31,11 @@ export default function Page() {
           </Link>
         </li>
         <li>
+          <Link href="/login-native">
+            Login Native
+          </Link>
+        </li>
+        <li>
           <Link href="/use-state">
             Magic Button
           </Link>
