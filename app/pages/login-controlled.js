@@ -24,12 +24,12 @@ export default function LoginPage() {
             <form onSubmit={onSubmit}>
                 <label>
                     Username:
-                    <input type="text" name='username' value={data.username} onChange={event => setData({username: event.target.value})}/>
+                    <input type="text" name='username' value={data.username} onChange={event => setData({username: event.target.value, password: data.password})}/>
                 </label>
                 <br/>
                 <label>
                     Password:
-                    <input type="password" name='password' value={data.password} onChange={event => setData({password: event.target.value})}/>
+                    <input type="password" name='password' value={data.password} onChange={event => setData({username: data.username, password: event.target.value})}/>
                 </label>
                 <br/>
                 <button type="submit">Submit</button>

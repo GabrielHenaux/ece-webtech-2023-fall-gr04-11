@@ -12,6 +12,8 @@ export default function Page() {
             <Head>
                 <title>Use State Page</title>
             </Head>
+            <UserContext>
+            </UserContext>
             <h1>Use State Page</h1>
             <p>Count: {count}</p>
             <button onClick={() => setCount(count + 1)}>Click me!</button>
