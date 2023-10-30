@@ -4,16 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '../components/Layout.js'
 
-export default function Page() {
-  const [articles, setArticles] = useState([])
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('/api/articles')
-      const articles = await response.json()
-      setArticles(articles)
-    }
-    fetchData()
-  }, [])
+export default function Page({articles}) {
   return (
     <Layout>
       <Head>
@@ -26,7 +17,7 @@ export default function Page() {
       </h1>
       <p className="italic font-bold">CEO true story about the best world car manufacturer</p>
       <ul>
-        {articles.map(article => (
+        { articles.map( article => (
           <li key={article.slug}>
             <h2><Link href={`/articles/${article.slug}`}>{article.title}</Link></h2>
             <Image src={`/articles/${article.image}`} alt="Ferrari picture" width={300} height={300} />
@@ -36,4 +27,15 @@ export default function Page() {
       </ul>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const response = await fetch('http://localhost:3000/api/articles');
+  const articles = await response.json();
+
+  return {
+    props: {
+      articles,
+    },
+  };
 }

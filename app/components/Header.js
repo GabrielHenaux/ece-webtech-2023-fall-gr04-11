@@ -8,7 +8,7 @@ export default function Header(){
     <header className={styles.header}>
       <div className={styles.logo}>
         <Link href={`/`}>
-          <Image src="/ferrari.png" alt="Adaltas Logo" width={50} height={50} />
+          <Image src="/ferrari.png" alt="FerrariNews Logo" width={50} height={50} />
           <span>
             FerrariNews
           </span>
