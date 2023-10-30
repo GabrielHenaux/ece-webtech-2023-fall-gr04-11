@@ -30,6 +30,11 @@ export default function Page() {
             Contact us
           </Link>
         </li>
+        <li>
+          <Link href="/use-state">
+            Magic Button
+          </Link>
+        </li>
       </ul>
     </Layout>
   )
