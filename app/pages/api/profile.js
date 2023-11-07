@@ -1,10 +1,10 @@
 export const db = {
     slug: 'G0001',
     username: 'gabyhenaux',
-    firstName: 'Gaby',
+    password: '1234',
+    firstName: 'Gabriel',
     lastName: 'Henaux',
     email: 'gaby.henaux@gmail.com',
-    password: '1234',
 }
 
   
