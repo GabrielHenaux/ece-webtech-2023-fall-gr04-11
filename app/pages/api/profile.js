@@ -1,4 +1,4 @@
-export const db = {
+export const userConnected = {
     slug: 'G0001',
     username: 'gabyhenaux',
     password: '1234',
@@ -9,5 +9,5 @@ export const db = {
 
   
   export default function handler(req, res) {
-    res.status(200).json(db)
+    res.status(200).json(userConnected)
   }

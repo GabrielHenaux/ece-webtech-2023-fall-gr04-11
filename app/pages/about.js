@@ -10,8 +10,6 @@ export default function Page() {
         <meta name="description" content="Don't be shy, drop us an email" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <UserContext>
-      </UserContext>
       <h1>
         About us
       </h1>

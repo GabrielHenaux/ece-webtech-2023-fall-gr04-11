@@ -4,8 +4,7 @@ import Header from '../components/Header.js'
 import Footer from '../components/Footer.js'
 import styles from '../styles/Layout.module.css'
 import React, { useEffect, useState } from "react";
-
-
+import { Router } from 'next/router.js'
 
 export default function UserContext({children}){
     const [userProfile, setUserProfile] = useState({});
@@ -56,9 +55,13 @@ export default function UserContext({children}){
             )}
             <div className={styles.container}>
                 {isLoggedIn ? (
-                    <button onClick={handleLogout}>Logout</button>
+                    <button onClick={handleLogout}>
+                        <Link href="/">Logout</Link>
+                    </button>
                 ) : (
-                    <button onClick={handleLogin}>Login</button>
+                    <button onClick={handleLogin}>
+                        <Link href="/login-controlled">Login</Link>
+                        </button>
                 )}
             </div>
         </div>
