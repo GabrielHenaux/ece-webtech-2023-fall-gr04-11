@@ -15,7 +15,7 @@ export default function LoginPage() {
         const data = new FormData(event.target);
         //TODO: check the username and password
         console.log("sending data");
-        //TODO send the data to the server
+        //TODO send the data to the server 
     };
 
     return (
