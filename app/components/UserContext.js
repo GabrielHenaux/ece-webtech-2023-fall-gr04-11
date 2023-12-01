@@ -1,69 +1,31 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import Header from '../components/Header.js'
-import Footer from '../components/Footer.js'
-import styles from '../styles/Layout.module.css'
-import React, { useEffect, useState } from "react";
-import { Router } from 'next/router.js'
+import {createContext, useState, useEffect} from 'react'
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
-export default function UserContext({children}){
-    const [userProfile, setUserProfile] = useState({});
-    const [isLoggedIn, setIsLoggedIn] = useState();
+const Context = createContext()
 
-    const handleLogin = () => {
-        setIsLoggedIn(true);
-    }
+export default Context
 
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-    }
+export const ContextProvider = ({
+  children
+}) => {
+  const supabase = useSupabaseClient()
+  const supabaseUser = useUser()
+  const [user, setUser] = useState()
+  useEffect(function () {
+    if (supabaseUser) setUser(supabaseUser)
+  }, [supabaseUser])
 
-    useEffect(() => {
-        const fetchProfile = async () => {
-            try {
-                const response = await fetch('http://localhost:3000/api/profile');
-                if (response.ok) {
-                    const data = await response.json();
-                    setUserProfile(data);
-                } else if (response.status === 401) {
-                    setError('You are not logged in');
-                } else {
-                    throw new Error('Failed to fetch profile');
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        };
- 
-        fetchProfile();
-    }, []);
-
-    return (
-        <div>
-            {isLoggedIn && (
-                <div>
-                    <div>
-                        <Image src={'/profile.png'} alt="profile" width={50} height={50} />
-                    </div>
-                    <div>
-                        <h2>
-                            {userProfile.firstName} {userProfile.lastName}
-                        </h2>
-                        <h3>{userProfile.email}</h3>
-                    </div>
-                </div>
-            )}
-            <div className={styles.container}>
-                {isLoggedIn ? (
-                    <button onClick={handleLogout}>
-                        <Link href="/">Logout</Link>
-                    </button>
-                ) : (
-                    <button onClick={handleLogin}>
-                        <Link href="/login-controlled">Login</Link>
-                        </button>
-                )}
-            </div>
-        </div>
-    );
+  return (
+    <Context.Provider
+      value={{
+        user: user,
+        logout: async () => {
+          await supabase.auth.signOut()
+          setUser(null)
+        }
+      }}
+    >
+      {children}
+    </Context.Provider>
+  )
 }
