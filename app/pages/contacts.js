@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import Layout from '../components/Layout.js'
+import {createPagesBrowserClient} from "@supabase/auth-helpers-nextjs";
 
 export default function Page() {
-  const supabase = useSupabaseClient()
+  const supabase = createPagesBrowserClient()
   const [message, setMessage] = useState(null)
   const onSubmit = async function(e){
     e.preventDefault()

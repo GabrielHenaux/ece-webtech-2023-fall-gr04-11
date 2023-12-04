@@ -3,10 +3,11 @@ import Link from 'next/link'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import Layout from '../../components/Layout.js'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
+import {createPagesBrowserClient} from "@supabase/auth-helpers-nextjs";
 
 export default function Contacts() {
   const [contacts, setContacts] = useState([])
-  const supabase = useSupabaseClient()
+  const supabase = createPagesBrowserClient()
   useEffect(() => {
     (async () => {
       let { data, error, status } = await supabase

@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import md from 'markdown-it'
 import Layout from '../../../components/Layout.js'
+import {createPagesBrowserClient} from "@supabase/auth-helpers-nextjs";
 
 export default function Contacts({
   id
 }) {
   const [contact, setContact] = useState(null)
-  const supabase = useSupabaseClient()
+  const supabase = createPagesBrowserClient()
   useEffect(() => {
     (async () => {
       let { data, error, status } = await supabase

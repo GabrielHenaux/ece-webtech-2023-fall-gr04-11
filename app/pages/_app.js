@@ -6,7 +6,7 @@ import { ContextProvider } from '../components/UserContext'
 
 export default function App({ Component, pageProps }) {
   // Create a new supabase browser client on every first render.
-  const [supabaseClient] = useState(() => createPagesBrowserClient())
+  const supabaseClient = createPagesBrowserClient()
   return (
     <SessionContextProvider
       supabaseClient={supabaseClient}

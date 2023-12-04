@@ -3,10 +3,11 @@ import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import Layout from '../components/Layout.js'
+import {createPagesBrowserClient} from "@supabase/auth-helpers-nextjs";
 
 export default function Page() {
   const router = useRouter()
-  const supabase = useSupabaseClient()
+  const supabase = createPagesBrowserClient()
   const user = useUser()
   if(user){
     router.push('/profile')
