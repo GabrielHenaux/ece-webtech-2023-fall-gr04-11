@@ -5,7 +5,7 @@ import UserContext from '../components/UserContext';
 import AuthForm from "@/pages/auth-form";
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://ougeuzlashhmrbiwqmqk.supabase.co';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -15,19 +15,22 @@ export default function Page() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+
         async function fetchData() {
             const { data, error } = await supabase
                 .from('articles')
                 .select('*');
             if (!error && data) {
                 setArticles(data);
+                console.log('data')
+                console.log(supabase.from('articles').select('*'));
             } else {
                 console.error('Error fetching data: ', error);
             }
             setLoading(false);
         }
 
-        fetchData();
+        fetchData().then(r => console.log(r));
     }, []);
 
     if (loading) {
@@ -43,7 +46,7 @@ export default function Page() {
             )}
             {articles.length > 0 ? (
                 <h1 className='wt-title'>
-                    {articles[0].message}
+                    {articles[0].title}
                 </h1>
             ) : (
                 <h1 className='wt-title'>No articles found</h1>
