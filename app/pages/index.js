@@ -20,6 +20,7 @@ export default async function Page() {
             const { data, error } = await supabase
                 .from('articles')
                 .select('*');
+            console.log(data);
             if (error) {
                 console.error('Error fetching data: ', error);
             } else {
