@@ -1,11 +1,35 @@
 import Link from 'next/link'
 import Layout from '../components/Layout.js'
-import {useContext} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import UserContext from '../components/UserContext'
 import AuthForm from "@/pages/auth-form";
+import { createClient } from '@supabase/supabase-js'
 
-export default function Page() {
+const supabaseUrl = 'https://ougeuzlashhmrbiwqmqk.supabase.co'
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+export default async function Page() {
     const {profile} = useContext(UserContext)
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const { data, error } = await supabase
+                .from('articles')
+                .select('*');
+            if (error) {
+                console.error('Error fetching data: ', error);
+            } else {
+                setData(data);
+            }
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
     return (
 
         <Layout
@@ -19,7 +43,7 @@ export default function Page() {
                 </div>
             )}
             <h1 className='wt-title'>
-                Welcome to <a href="https://www.adaltas.com">web technologies!</a>
+                {data && data.length > 0 ? data[0].title : 'No articles found'}
             </h1>
 
             <ul>
