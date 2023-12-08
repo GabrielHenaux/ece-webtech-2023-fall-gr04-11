@@ -7,3 +7,23 @@
 .wt-title {
   @apply text-3xl font-bold underline mb-10;
 }
+
+.menu {
+  @apply rounded py-1 px-2 hover:bg-red-600 hover:text-slate-100
+}
+
+.menu-title {
+  @apply rounded py-1 px-2 hover:bg-red-600 hover:text-slate-100
+}
+
+.header {
+  @apply bg-white text-black p-8 flex border-b-2 border-red-500
+}
+
+.footer {
+  @apply flex flex-1 p-8 justify-center items-center text-black bg-white text-center
+}
+
+.main {
+  @apply py-10 min-h-screen max-w-full md:max-w-2xl md:mx-auto
+}

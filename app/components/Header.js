@@ -7,25 +7,25 @@ import UserContext from './UserContext'
 export default function Header(){
   const {user} = useContext(UserContext)
   return (
-    <header className="flex bg-slate-200 px-10 py-2">
+    <header className="header">
       <Link href={`/`} className="flex-grow flex items-center">
-        <Image src="/adaltas.svg" className='cursor-pointer h-6 mr-5' alt="Adaltas Logo" width={25} height={25} />
-        <span className="rounded py-1 px-2 hover:bg-slate-600 hover:text-slate-100">
-          Web technologies
+        <Image src="/ferrari.png" className='cursor-pointer h-8 mr-5' alt="Ferrari Logo" width={30} height={25} />
+        <span className="menu-title">
+          Ferrari News
         </span>
       </Link>
       <ul className="flex gap-5">
-        <li className="rounded py-1 px-2 hover:bg-slate-600 hover:text-slate-100">
+        <li className="menu">
           <Link href="/articles">
             Articles
           </Link>
         </li>
-        <li className="rounded py-1 px-2 hover:bg-slate-600 hover:text-slate-100">
+        <li className="menu">
           <Link href="/about">
             About us
           </Link>
         </li>
-        <li className="rounded py-1 px-2 hover:bg-slate-600 hover:text-slate-100">
+        <li className="menu">
           <Link href="/contacts">
             Contact us
           </Link>
