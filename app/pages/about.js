@@ -3,15 +3,46 @@ import Layout from '../components/Layout.js'
 export default function Page() {
   return (
     <Layout
-      title="About us"
+      title="About Us"
       description="Don't be shy, drop us an email"
-      >
+    >
       <h1 className='wt-title'>
-        About us
+        About Us
       </h1>
-      <p>
-        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sit amet enim sit amet nibh auctor interdum sit amet sed lacus. Nam consequat hendrerit lobortis. Mauris nec facilisis turpis. Nullam neque sem, ultricies in facilisis nec, rhoncus et nibh. Curabitur et risus in risus maximus scelerisque non at justo. Nullam blandit massa id justo elementum rutrum. Phasellus id facilisis lacus, vel dignissim magna. Duis at lacus a mi varius lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc ultrices justo bibendum aliquam tempus. Vivamus consequat metus eros, sit amet malesuada mi placerat a. Vivamus efficitur faucibus odio vel vulputate. Suspendisse eros dolor, pellentesque ac aliquam vel, rutrum eu ipsum. Donec quis nunc felis. 
-      </p>
+      <section>
+        <h2 className='wt-subtitle'>
+          Welcome to Ferrari News
+        </h2>
+        <p>
+          Your ultimate source of information and passion for everything related to Ferrari cars. We are dedicated to sharing the fascination, history, and beauty of these legendary Italian automobiles with you.
+        </p>
+      </section>
+      <section>
+        <h2 className='wt-subtitle'>
+          Our Mission
+        </h2>
+        <p>
+          At Ferrari News, our mission is to provide you with easy access to the latest Ferrari news, model reviews, maintenance guides, and a community of enthusiasts who share your love for Ferrari.
+        </p>
+      </section>
+      <section>
+        <h2 className='wt-subtitle'>
+          What We Offer
+        </h2>
+        <p>
+          Explore the rich history of Ferrari, from Enzo Ferrari's early days to the creation of world-renowned sports cars. Stay informed about the latest model announcements, Ferrari events, and important news. Join our community to discuss, share tips and photos, and meet fellow Ferrari enthusiasts.
+        </p>
+      </section>
+      <section>
+        <h2 className='wt-subtitle'>
+          Our Commitment to Quality
+        </h2>
+        <p>
+          At Ferrari News, we are committed to delivering accurate information and high-quality resources to help you appreciate and maintain your passion for Ferrari. Join us on Ferrari News and discover everything you need to know about Ferrari. It's the perfect place for enthusiasts of Italian automobiles. We look forward to sharing this Ferrari adventure with you!
+        </p>
+      </section>
     </Layout>
   )
 }
+
+
