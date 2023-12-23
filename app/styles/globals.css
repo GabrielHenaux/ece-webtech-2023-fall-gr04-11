@@ -7,7 +7,7 @@
 .wt-title {
   @apply text-3xl font-bold underline mb-10;
 }
-
+/*CSS structure website*/
 .menu {
   @apply rounded py-1 px-2 hover:bg-red-600 hover:text-slate-100
 }
@@ -26,4 +26,23 @@
 
 .main {
   @apply py-10 min-h-screen max-w-full md:max-w-2xl md:mx-auto
+}
+
+/*CSS article*/
+.article-title {
+  @apply font-sans font-bold text-3xl underline text-center mb-5
+}
+.article-info {
+  @apply font-sans text-base text-center
+}
+.article-component {
+  @apply rounded-lg border-2 border-red-600 mb-5 hover:bg-red-400
+}
+.article-image {
+  @apply mx-auto
+}
+
+/*CSS Pagination*/
+.pagination-button {
+  @apply font-sans
 }

@@ -17,19 +17,19 @@ export default function Articles({ articles, page, totalPages }) {
       <p className="italic font-bold my-5">Here are all the articles</p>
       <ul>
         {articles.map(article => (
-          <li key={article.id} className="my-5">
-            <h2 className="font-bold mb-1">
+          <li key={article.id} className="article-component">
+            <h2 className="article-title">
               <Link href={`/articles/${article.id}`}>
                 {article.title || ' '} {/* replace null by a blank */}
               </Link>
             </h2>
+            {article.image_url && (
+              <img src={article.image_url} alt={article.title} className="article-image" />
+            )}
             <p className="article-info">
               {(article.author ? `Written by ${article.author.firstname} ${article.author.lastname}` : ' ')}
               {article.created_at ? ` - ${new Date(article.created_at).toLocaleDateString()}` : ' '}
             </p>
-            {article.image_url && (
-              <img src={article.image_url} alt={article.title} className="article-image" />
-            )}
             {article.content ? <p className="article-content">{article.content}</p> : ' '}
           </li>
         ))}
