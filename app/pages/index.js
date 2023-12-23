@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 
 import Link from 'next/link';
@@ -27,33 +27,35 @@ export default function Page({ articles }) {
             <h1>Welcome to Ferrari News website</h1>
             <p>This is the home page</p>
 
-            {/* Search form */}
+
             <form onSubmit={handleSearch}>
-                <input 
-                    type="text" 
-                    value={search} 
-                    onChange={(e) => setSearch(e.target.value)} 
-                    placeholder="Search articles..." 
+                <input
+                    type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Search articles..."
                 />
                 <button type="submit">Search</button>
             </form>
 
-            {/* Displaying the list of articles */}
-            <ul>
-                {articles.map(article => (
-                    <li key={article.id}>
-                        {/* Link to the individual article */}
-                        <Link href={`/articles/${article.id}`}>
-                            <p>{article.title}</p>
-                        </Link>
-                        {/* Additional article details can be added here if needed */}
-                    </li>
-                ))}
-            </ul>
+            {/* Displaying the list of articles or a message if no articles are found */}
+            {articles.length > 0 ? (
+                <ul>
+                    {articles.map(article => (
+                        <li key={article.id}>
+                            {/* Link to the individual article */}
+                            <Link href={`/articles/${article.id}`}>
+                                <p>{article.title}</p>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>No articles found.</p>
+            )}
         </Layout>
     );
 }
-
 
 export async function getServerSideProps({ query }) {
     const searchTerm = query.search || '';
@@ -63,7 +65,6 @@ export async function getServerSideProps({ query }) {
     let data = [];
     let error = null;
 
-    // Fetch articles from Supabase
     if (searchTerm) {
         let request = supabase
             .from('articles')
@@ -76,9 +77,11 @@ export async function getServerSideProps({ query }) {
             `)
             .order('created_at', { ascending: false });
 
-        // Search for articles with the search term in the title
-        const formattedSearchTerm = searchTerm.split(' ').join(' & '); 
-        request = request.filter('title', 'fts', formattedSearchTerm); 
+        if (searchTerm) {
+            // Format the search term for the full text search
+            const formattedSearchTerm = searchTerm.split(' ').join(' | ');
+            request = request.filter('textsearchable_index_col', 'fts', formattedSearchTerm);
+        }
 
         const response = await request;
         data = response.data;
