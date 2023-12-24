@@ -26,6 +26,11 @@ export default function ArticlePage({ article, comments}) {
     }
   };
 
+  const handleEdit = () => {
+    router.push(`/edit-article/${article.id}`); 
+  };
+  
+
   return (
     <Layout
     
@@ -38,6 +43,9 @@ export default function ArticlePage({ article, comments}) {
       <button onClick={handleDelete} className="delete-article-button">
         ✖ Supprimer
       </button>
+      <button onClick={handleEdit} className="edit-article-button">
+        ✍ Edit
+        </button>
       <h1 className='wt-title'>{article.title || ' '}</h1>
       <p className="article-info">
         {article.author ? `Written by ${article.author.firstname} ${article.author.lastname}` : ' '}
