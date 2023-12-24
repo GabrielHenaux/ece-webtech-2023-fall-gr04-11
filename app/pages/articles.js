@@ -23,24 +23,24 @@ export default function Articles({ articles, page, totalPages }) {
         <button onClick={handleNewArticleClick} className="create-article-button">
             New Article
         </button>
-      <h1 className='wt-title'>Web technologies articles</h1>
-      <p className="italic font-bold my-5">Here are all the articles</p>
+      <h1 className='wt-title'>Ferrari's News Articles</h1>
+      <p className="italic font-bold my-5">Discover our news articles about Ferrari</p>
       <ul>
         {articles.map(article => (
           <li key={article.id} className="article-component">
-            <h2 className="article-title">
-              <Link href={`/articles/${article.id}`}>
+            <Link href={`/articles/${article.id}`}>
+              <h2 className="article-title">
                 {article.title || ' '} {/* replace null by a blank */}
-              </Link>
-            </h2>
-            {article.image_url && (
-              <img src={article.image_url} alt={article.title} className="article-image" />
-            )}
-            <p className="article-info">
-              {(article.author ? `Written by ${article.author.firstname} ${article.author.lastname}` : ' ')}
-              {article.created_at ? ` - ${new Date(article.created_at).toLocaleDateString()}` : ' '}
-            </p>
-            {article.content ? <p className="article-content">{article.content}</p> : ' '}
+              </h2>
+              {article.image_url && (
+                <img src={article.image_url} alt={article.title} className="article-image" />
+              )}
+              <p className="article-info">
+                {(article.author ? `Written by ${article.author.firstname} ${article.author.lastname}` : ' ')}
+                {article.created_at ? ` - ${new Date(article.created_at).toLocaleDateString()}` : ' '}
+              </p>
+              {article.content ? <p className="article-content">{article.content}</p> : ' '}
+            </Link>
           </li>
         ))}
       </ul>

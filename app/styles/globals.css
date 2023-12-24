@@ -5,7 +5,7 @@
 /* wt stands for Web Tech */
 
 .wt-title {
-  @apply text-3xl font-bold underline mb-10;
+  @apply text-3xl font-bold underline mb-10 text-center;
 }
 /*CSS structure website*/
 .menu {
@@ -17,7 +17,7 @@
 }
 
 .header {
-  @apply bg-white text-black p-8 flex border-b-2 border-red-500
+  @apply bg-white text-black p-8 flex border-b-2 border-red-500 justify-between
 }
 
 .footer {
@@ -36,13 +36,19 @@
   @apply font-sans text-base text-center
 }
 .article-component {
-  @apply rounded-lg border-2 border-red-600 mb-5 hover:bg-red-400
+  @apply rounded-md mb-5 hover:bg-red-400 w-auto
 }
 .article-image {
-  @apply mx-auto
+  @apply mx-auto w-3/4
 }
 
 /*CSS Pagination*/
 .pagination-button {
-  @apply font-sans
+  @apply font-sans rounded-md hover:bg-red-600 w-20
+}
+.pagination-component {
+  @apply flex justify-center items-center
+}
+.pagination-text {
+  @apply text-gray-600 mr-5 ml-5
 }
