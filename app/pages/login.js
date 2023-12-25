@@ -10,7 +10,7 @@ export default function Page() {
   const supabase = createPagesBrowserClient()
   const user = useUser()
   if(user){
-    router.push('/profile')
+    //router.push('/profile')
   }
   return (
     <Layout
@@ -20,11 +20,17 @@ export default function Page() {
       <h1 className='wt-title'>
         Sign in
       </h1>
+        <p>
+            //check user data if logged in
+            <pre><code>{JSON.stringify(user, null, 2)}</code></pre>
+
+        </p>
       <Auth
         supabaseClient={supabase}
         appearance={{ theme: ThemeSupa }}
         providers={['github']}
       />
+
     </Layout>
   )
 }
