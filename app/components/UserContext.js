@@ -1,5 +1,6 @@
 import {createContext, useState, useEffect} from 'react'
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+import {useRouter} from "next/router";
 
 const Context = createContext()
 
@@ -9,7 +10,8 @@ export const ContextProvider = ({
   children
 }) => {
   const supabase = useSupabaseClient()
-  const supabaseUser = useUser()
+  const supabaseUser = useUser();
+  const router = useRouter();
   const [user, setUser] = useState();
   const [profile, setProfile] = useState(null);
 
@@ -49,8 +51,30 @@ export const ContextProvider = ({
         profile: profile,
         logout: async () => {
           await supabase.auth.signOut()
-          setUser(null)
-        }
+          setUser(null);
+          await router.push('/login')
+        },
+        login: async () => {
+          await router.push('/login')
+
+        },
+          setProfile: async (profileIn) => {
+            setProfile(profileIn)
+              const {data, error} = await supabase
+                  .from('profiles')
+                  .update({
+                      firstname: profile.firstname,
+                      lastname: profile.lastname,
+                      address: profile.address,
+                      username: profile.username,
+                  })
+                  .match({id: user.id});
+
+              if (error) {
+                  console.error('Erreur lors de la mise à jour:', error);
+                  return null;
+              }
+          }
       }}
     >
       {children}

@@ -7,14 +7,8 @@ import UserContext from './UserContext'
 
 
 export default function Header(){
-  const {user, profile, logout} = useContext(UserContext)
+  const {user, profile, logout, login} = useContext(UserContext)
   const [pseudo, setPseudo] = useState('username')
-    useEffect(() => {
-        if (profile) {
-        setPseudo(profile.username)
-        }
-    }, [profile])
-
 
   return (
     <header className="header">
@@ -51,19 +45,18 @@ export default function Header(){
         {user && (
           <li className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">
             <Link href="/profile" className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6">
-
-              {pseudo}
+              {profile?.username}
               <OutlineUserCircleIcon />
             </Link>
           </li>
         )}
         <li className="py-1 px-2 text-slate-800 hover:text-slate-500">
           {user ?
-            <button className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6" >
+            <button onClick={logout} className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6" >
               Sing out
             </button>
             :
-            <button className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6">
+            <button onClick={login} className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6">
               Sing in
             </button>
           }

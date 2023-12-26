@@ -14,13 +14,10 @@ export default function Page() {
   const {profile, logout} = useContext(UserContext)
 
     if(user && profile) {
-        if (profile.username) {
-            router.push('/')
-
+        if (profile.username ===null || profile.firstname === null || profile.lastname === null || profile.address === null) {
+            router.push('/profile')
         }else {
-
-            router.push('/data-form')
-
+            router.push('/')
         }
     }
   return (
@@ -34,8 +31,11 @@ export default function Page() {
 
       <Auth
         supabaseClient={supabase}
+        socialColors={true}
+        socialButtonSize="medium"
+        socialButtonIconSize="medium"
         appearance={{ theme: ThemeSupa }}
-        providers={['github']}
+        providers={['github', 'google', 'facebook']}
       />
 
     </Layout>
