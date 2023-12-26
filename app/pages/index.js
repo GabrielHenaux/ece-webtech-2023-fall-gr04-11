@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Layout from '../components/Layout.js';
 import UserContext from '../components/UserContext';
-import AuthForm from "@/pages/auth-form";
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;

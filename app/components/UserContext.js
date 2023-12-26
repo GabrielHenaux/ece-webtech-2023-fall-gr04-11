@@ -1,5 +1,5 @@
 import {createContext, useState, useEffect} from 'react'
-import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+import {useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import {useRouter} from "next/router";
 
 const Context = createContext()

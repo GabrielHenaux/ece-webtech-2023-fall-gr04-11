@@ -8,7 +8,6 @@ import UserContext from './UserContext'
 
 export default function Header(){
   const {user, profile, logout, login} = useContext(UserContext)
-  const [pseudo, setPseudo] = useState('username')
 
   return (
     <header className="header">
@@ -20,6 +19,7 @@ export default function Header(){
           </span>
         </Link>
       </span>
+
       <ul className="flex gap-5">
         <Link href="/articles">
           <li className="menu">
@@ -28,6 +28,7 @@ export default function Header(){
             </p>
           </li>
         </Link>
+
         <Link href="/about">
           <li className="menu">
             <p>
@@ -35,6 +36,7 @@ export default function Header(){
             </p>
           </li>
         </Link>
+
         <Link href="/contacts">
           <li className="menu">
             <p>
@@ -42,6 +44,7 @@ export default function Header(){
             </p>
           </li>
         </Link>
+
         {user && (
           <li className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">
             <Link href="/profile" className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6">
@@ -50,6 +53,7 @@ export default function Header(){
             </Link>
           </li>
         )}
+
         <li className="py-1 px-2 text-slate-800 hover:text-slate-500">
           {user ?
             <button onClick={logout} className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6" >
