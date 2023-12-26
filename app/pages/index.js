@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-
 import Link from 'next/link';
 import Layout from '../components/Layout.js';
 import UserContext from '../components/UserContext';

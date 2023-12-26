@@ -7,14 +7,10 @@ export default function AuthForm() {
     const supabase = createClientComponentClient()
 
     return (
-        <Auth
-            supabaseClient={supabase}
-            view="magic_link"
-            appearance={{ theme: ThemeSupa }}
-            theme="dark"
-            showLinks={false}
-            providers={[]}
-            redirectTo="http://localhost:3000/auth/callback"
-        />
+
+        <ThemeSupa>
+            <Auth supabaseClient={supabase} providers={['google']} socialLayout="horizontal" />
+        </ThemeSupa>
+
     )
 }

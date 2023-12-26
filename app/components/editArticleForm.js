@@ -92,7 +92,7 @@ export default function EditArticleForm({ articleId }) {
         if (error) {
             console.error("Error updating the article:", error);
         } else {
-            router.push('/articles');
+            /*router.push('/articles');*/
         }
     };
 
@@ -100,7 +100,7 @@ export default function EditArticleForm({ articleId }) {
      * Handles the back button click.
      */
     const handleBack = () => {
-        router.back(); // go back to previous page (article[ID] page)
+        /*router.back(); // go back to previous page (article[ID] page)*/
     };
 
     return (

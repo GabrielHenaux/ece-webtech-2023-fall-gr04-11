@@ -8,7 +8,6 @@ export default function Page() {
   const { user, logout } = useContext(UserContext)
   const onClickLogout = () => {
     logout()
-    router.push('/login')
   }
   return (
     <Layout

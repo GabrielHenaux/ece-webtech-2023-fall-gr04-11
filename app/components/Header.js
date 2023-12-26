@@ -1,11 +1,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import OutlineUserCircleIcon from '@heroicons/react/24/outline/UserCircleIcon'
-import { useContext } from 'react';
+import {useContext, useEffect, useState} from 'react';
 import UserContext from './UserContext'
 
+
+
 export default function Header(){
-  const {user} = useContext(UserContext)
+  const {user, profile, logout} = useContext(UserContext)
+  const [pseudo, setPseudo] = useState('username')
+    useEffect(() => {
+        if (profile) {
+        setPseudo(profile.username)
+        }
+    }, [profile])
+
+
   return (
     <header className="header">
       <span className="w-30">
@@ -41,14 +51,15 @@ export default function Header(){
         {user && (
           <li className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">
             <Link href="/profile" className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6">
-              username
+
+              {pseudo}
               <OutlineUserCircleIcon />
             </Link>
           </li>
         )}
         <li className="py-1 px-2 text-slate-800 hover:text-slate-500">
           {user ?
-            <button className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6">
+            <button className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6" >
               Sing out
             </button>
             :
