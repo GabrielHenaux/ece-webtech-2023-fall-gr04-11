@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/router';
-import { createApi } from 'unsplash-js';
+// import { createApi } from 'unsplash-js';
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -9,9 +9,9 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Initialize Unsplash client
-const unsplash = createApi({
+/*const unsplash = createApi({
     accessKey: 'SFWX_WpAKXydFD4ev2muaeLCtjL5lLqnwDxyLH_BmRs',
-});
+});*/
 
 
 export default function NewArticleForm() {
