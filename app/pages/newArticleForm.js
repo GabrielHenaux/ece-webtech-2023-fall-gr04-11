@@ -71,7 +71,6 @@ export default function NewArticleForm() {
                 <form className="w-full" onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="title">Title</label>
-                        <br></br>
                         <input
                             type="text"
                             id="title"
@@ -82,7 +81,6 @@ export default function NewArticleForm() {
                     </div>
                     <div>
                         <label htmlFor="message">Content</label>
-                        <br></br>
                         <textarea
                             id="message"
                             value={message}
@@ -111,6 +109,7 @@ export default function NewArticleForm() {
                             id="image-search"
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
+                        
 
                         <button type="button" onClick={() => searchImages(searchQuery)}>Search Images</button>
                         <div>
@@ -127,7 +126,7 @@ export default function NewArticleForm() {
                         </div>
                     )}
 
-                    <button type="submit">Post my Article</button>
+                    <button type="submit" className="button-New-Article-Submit">Post my Article</button>
                 </form>
             </div>
         </Layout>

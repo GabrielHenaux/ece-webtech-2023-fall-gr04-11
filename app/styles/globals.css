@@ -32,7 +32,7 @@
 
 .main {
   @apply py-10 min-h-screen min-w-full md:max-w-2xl 
-  md:mx-auto bg-gradient-to-b from-white to-red-500;
+  md:mx-auto;
 }
 
 /*CSS article*/
@@ -57,43 +57,49 @@
   @apply mx-auto w-3/4;
 }
 .create-article-button{
-  @apply rounded-md hover:bg-gray-300 w-36 ml-4;
+  @apply rounded-md hover:bg-red-600 w-36 ml-4;
 }
 .article-content {
-  @apply font-sans text-base mt-5 text-center text-2xl;
+  @apply font-sans text-base mt-5 text-center text-2xl w-10/12;
 }
 .comment-section {
-  @apply mb-5;
+  @apply mb-5 rounded-md;
 }
 .back-to-articles {
   @apply hover:underline w-14 mb-5;
 }
 .delete-article-button {
-  @apply rounded-md bg-yellow-500 w-28 hover:bg-yellow-800;
+  @apply rounded-md bg-red-600 w-28 hover:bg-red-800;
 }
 .edit-article-button {
   @apply rounded-md hover:bg-gray-300 w-20 mr-4;
 }
 .div-class-edit {
-  @apply flex items-center justify-between mb-5 mt-5 w-1/2 mx-auto;
+  @apply flex ml-auto mb-5 mt-5 w-1/4;
 }
 .in-main {
   @apply w-3/4 mx-auto;
 }
+.div-article-content {
+  @apply flex items-center justify-center mx-auto;
+}
 /*CSS comment*/
 .comment-message{
-  @apply text-xl text-center;
+  @apply text-xl;
 }
 .comment-author {
-  @apply text-center text-slate-600;
+  @apply text-slate-600 italic;
 }
 .comment {
-  @apply bg-white rounded-md mb-5 hover:bg-gradient-to-b from-white to-yellow-400;
+  @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full;
+}
+.comment-name-section {
+  @apply text-black mt-44
 }
 
 /*CSS Pagination*/
 .pagination-button {
-  @apply font-sans rounded-md hover:bg-gray-300 w-20;
+  @apply font-sans rounded-md hover:bg-red-600 w-20;
 }
 .pagination-component {
   @apply flex justify-center items-center;
@@ -103,3 +109,57 @@
 }
 
 /*NewArticle css*/
+/* Style du formulaire */
+form {
+  @apply max-w-screen-md mx-auto;
+}
+
+/* Style des champs du formulaire */
+label {
+  @apply block mb-2 font-bold;
+}
+
+input,
+select {
+  @apply w-full px-3 py-2 border rounded-md mb-4;
+}
+textarea {
+  @apply w-full px-3 py-2 border rounded-md mb-4 h-32;
+}
+
+/* Style du bouton de recherche d'image */
+#image-search {
+  @apply mr-2;
+}
+
+/* Style de la liste d'images */
+#image-list {
+  @apply flex flex-wrap gap-4;
+}
+
+/* Style des images de la liste */
+#image-list img {
+  @apply w-24 h-24 object-cover rounded-md cursor-pointer;
+}
+
+/* Style de l'image sélectionnée */
+#selected-image {
+  @apply max-w-full mt-4 rounded-md;
+}
+
+/* submit Button */
+button[type="submit"] {
+  @apply bg-red-600 text-white px-4 py-2 rounded-md text-lg cursor-pointer;
+}
+button[type="submit"]:hover {
+  @apply bg-red-700;
+}
+.button-New-Article-Submit {
+  @apply bg-red-600 text-white px-4 py-2 rounded-md text-lg cursor-pointer;
+}
+.button-New-Article-Submit:hover {
+  @apply bg-red-700;
+}
+
+
+

@@ -25,18 +25,21 @@ export default function Page() {
       title="Sign in"
       description="User sign in"
       >
-      <h1 className='wt-title'>
-        Sign in
-      </h1>
+      <div className="in-main">
+        <h1 className='wt-title'>
+          Sign in
+        </h1>
 
-      <Auth
-        supabaseClient={supabase}
-        socialColors={true}
-        socialButtonSize="medium"
-        socialButtonIconSize="medium"
-        appearance={{ theme: ThemeSupa }}
-        providers={['github', 'google', 'facebook']}
-      />
+        <Auth
+          supabaseClient={supabase}
+          socialColors={true}
+          socialButtonSize="medium"
+          socialButtonIconSize="medium"
+          appearance={{ theme: ThemeSupa }}
+          providers={['github', 'google', 'facebook']}
+        />
+      </div>
+      
 
     </Layout>
   )

@@ -41,16 +41,20 @@ export default function ArticlePage({ article, comments}) {
         <div className="back-to-articles">
           <Link href="/articles">← Back</Link>
         </div>
-        <h1 className='wt-title'>{article.title || ' '}</h1>
-        <p className="article-info2">
-          {article.author ? `Written by ${article.author.firstname} ${article.author.lastname}` : ' '}
-          {article.created_at ? ` - ${new Date(article.created_at).toLocaleDateString()}` : ' '}
-        </p>
-        {article.image_url && (
-          <img src={article.image_url} alt={article.title} className="article-image" />
-        )}
-        <div className="article-content">
-          {article.message || ' '} {/* replace null by a blank if there is no content */}
+        <div className="">
+          <h1 className='wt-title'>{article.title || ' '}</h1>
+          <p className="article-info2">
+            {article.author ? `Written by ${article.author.firstname} ${article.author.lastname}` : ' '}
+            {article.created_at ? ` - ${new Date(article.created_at).toLocaleDateString()}` : ' '}
+          </p>
+          {article.image_url && (
+            <img src={article.image_url} alt={article.title} className="article-image" />
+          )}
+          <div className="div-article-content">
+            <div className="article-content">
+              {article.message || ' '} {/* replace null by a blank if there is no content */}
+            </div>
+          </div>
         </div>
         <div className="div-class-edit">
           <button onClick={handleEdit} className="edit-article-button">
@@ -60,12 +64,12 @@ export default function ArticlePage({ article, comments}) {
             ✖ Supprimer
           </button>
         </div>
-        <div className="comments-section">
-          <h2>Comments ({comments.length})</h2>
+        <div className="comment-section">
+          <h2 className="comment-name-section">Comments ({comments.length}):</h2>
           {comments.map(comment => (
             <div key={comment.id} className="comment">
-              <p className="comment-message">{comment.message}</p>
               <p className="comment-author">Author: {comment.author ? `${comment.author.firstname} ${comment.author.lastname}` : 'Unknown'}</p>
+              <p className="comment-message">{comment.message}</p>
             </div>
           ))}
         </div>

@@ -53,66 +53,89 @@ export default function Page() {
 
         <div className="container mx-auto p-4">
             {editing ? (
-                <div className="mx-auto min-h-screen flex flex-col items-center ">
-                    <p>
-                        First name: {profile.firstname}
-                    </p>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            profile.firstname = e.target.value;
+                <div className="grid grid-cols-1 gap-5 lg:w-full mx-auto">
+                    <div className="mx-auto min-h-screen flex flex-col items-center ">
+                        <p>
+                            First name: {profile.firstname}
+                        </p>
+                        <input
+                            type="text"
+                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                            onChange={(e) => {
+                                profile.firstname = e.target.value;
+                                }}
+                            placeholder="First Name"
+                        />
+                        <p>
+                            Last name: {profile.lastname}
+                        </p>
+                        <input
+                            type="text"
+                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                            onChange={(e) => {
+                                profile.lastname = e.target.value;
                             }}
-                        placeholder="First Name"
-                    />
-                    <p>
-                        Last name: {profile.lastname}
-                    </p>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            profile.lastname = e.target.value;
-                        }}
-                        placeholder="Last Name"
-                    />
-                    <p>
-                        Username: {profile.username}
-                    </p>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            profile.username = e.target.value;
+                            placeholder="Last Name"
+                        />
+                        <p>
+                            Username: {profile.username}
+                        </p>
+                        <input
+                            type="text"
+                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                            onChange={(e) => {
+                                profile.username = e.target.value;
 
-                        }}
-                        placeholder="Username"
-                    />
-                    <p>
-                        Address: {profile.address}
-                    </p>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            profile.address = e.target.value;
+                            }}
+                            placeholder="Username"
+                        />
+                        <p>
+                            Address: {profile.address}
+                        </p>
+                        <input
+                            type="text"
+                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                            onChange={(e) => {
+                                profile.address = e.target.value;
 
-                        }}
-                        placeholder="Address"
-                    />
-                    <div className="flex gap-2">
+                            }}
+                            placeholder="Address"
+                        />
+                        <div className="flex gap-2">
 
 
-                    <button onClick={handleSave}
-                            className="mt-6 text-xl py-3 px-6 mx-auto block bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition duration-200
-">
-                        Save
-                    </button>
+                        <button onClick={handleSave}
+                                className="mt-6 text-xl py-3 px-6 mx-auto block bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition duration-200
+                        ">
+                            Save
+                        </button>
+                        </div>
                     </div>
                 </div>
+                
             ) : (
-                <div className="mx-auto w-full max-w-2xl bg-red-600 rounded-lg shadow-lg p-4 flex flex-col items-center">
+                <div className="mx-auto w-full max-w-2xl bg-gray-400 rounded-lg shadow-lg p-4 flex flex-col items-center">
                     <ul className="text-gray-800 text-lg">
-                        <li><strong>First Name:</strong> {profile.firstname}</li>
-                        <li><strong>Last Name:</strong> {profile.lastname}</li>
-                        <li><strong>Username:</strong> {profile.username}</li>
-                        <li><strong>Address:</strong> {profile.address}</li>
+                        <li>
+                            <div className="rounded-lg mb-2">
+                                <strong>First Name:</strong> {profile.firstname}
+                            </div>
+                        </li>
+                        <li>
+                            <div className="rounded-lg mb-2">
+                                <strong>Last Name:</strong> {profile.lastname}
+                            </div>
+                        </li>
+                        <li>
+                            <div className="rounded-lg mb-2">
+                                <strong>Username:</strong> {profile.username}
+                            </div>
+                        </li>
+                        <li>
+                            <div className="rounded-lg mb-2">
+                                <strong>Address:</strong> {profile.address}
+                            </div>
+                        </li>
                     </ul>
 
                     <button
