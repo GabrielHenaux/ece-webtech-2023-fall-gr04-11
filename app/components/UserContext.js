@@ -12,7 +12,7 @@ export const ContextProvider = ({
   const supabase = useSupabaseClient()
   const supabaseUser = useUser();
   const router = useRouter();
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
 
 
@@ -27,7 +27,7 @@ export const ContextProvider = ({
 
 
                 if (error) {
-                    console.error('Erreur lors de la récupération du profil:', error);
+                    console.error('Error fetching profile:', error);
                 } else {
                     setProfile(data);
                     console.log('profile', data)

@@ -57,11 +57,11 @@ export default function Header(){
         <li className="py-1 px-2 text-slate-800 hover:text-slate-500">
           {user ?
             <button onClick={logout} className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6" >
-              Sing out
+              Sign out
             </button>
             :
             <button onClick={login} className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6">
-              Sing in
+              Sign in
             </button>
           }
         </li>

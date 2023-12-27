@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Layout from '../../components/Layout.js';
 import { useRouter } from 'next/router'; 
 import { createClient } from '@supabase/supabase-js';
+import UserContext from '../../components/UserContext.js';
+import {useContext} from "react";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -9,6 +11,9 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default function ArticlePage({ article, comments}) {
   const router = useRouter();
+  const { user } = useContext(UserContext);
+  const userId = user?.id;
+ 
 
   // function to delete an article
   const handleDelete = async () => {
@@ -29,6 +34,8 @@ export default function ArticlePage({ article, comments}) {
   const handleEdit = () => {
     router.push(`/edit-article/${article.id}`); 
   };
+
+
   
 
   return (
@@ -44,7 +51,7 @@ export default function ArticlePage({ article, comments}) {
         <div className="">
           <h1 className='wt-title'>{article.title || ' '}</h1>
           <p className="article-info2">
-            {article.author ? `Written by ${article.author.firstname} ${article.author.lastname}` : ' '}
+            {article.author ? `Written by ${article.author.username}` : ' '}
             {article.created_at ? ` - ${new Date(article.created_at).toLocaleDateString()}` : ' '}
           </p>
           {article.image_url && (
@@ -57,18 +64,22 @@ export default function ArticlePage({ article, comments}) {
           </div>
         </div>
         <div className="div-class-edit">
-          <button onClick={handleEdit} className="edit-article-button">
-            ✍ Edit
-          </button>
-          <button onClick={handleDelete} className="delete-article-button">
-            ✖ Supprimer
-          </button>
+          {user && userId === article.author.id && (
+            <>
+              <button onClick={handleEdit} className="edit-article-button">
+                ✍ Edit
+              </button>
+              <button onClick={handleDelete} className="delete-article-button">
+                ✖ Delete
+              </button>
+            </>
+          )}
         </div>
         <div className="comment-section">
           <h2 className="comment-name-section">Comments ({comments.length}):</h2>
           {comments.map(comment => (
             <div key={comment.id} className="comment">
-              <p className="comment-author">Author: {comment.author ? `${comment.author.firstname} ${comment.author.lastname}` : 'Unknown'}</p>
+              <p className="comment-author">{comment.author ? `${comment.author.username}` : 'Unknown'}</p>
               <p className="comment-message">{comment.message}</p>
             </div>
           ))}
@@ -86,9 +97,9 @@ export async function getStaticProps(ctx) {
     .from('articles')
     .select(`
       *,
-      author:contacts (
-        firstname,
-        lastname
+      author:profiles (
+        username,
+        id
       )
     `)
     .eq('id', id)
@@ -101,9 +112,8 @@ export async function getStaticProps(ctx) {
       id,
       message,
       created_at,
-      author:contacts (
-        firstname,
-        lastname
+      author:profiles (
+        username
       )
     `)
     .eq('article', id);

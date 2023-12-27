@@ -47,9 +47,9 @@
 }
 .article-component {
   @apply flex items-center justify-center rounded-md mb-5 w-1/2 mx-auto 
-  hover:scale-125 duration-300 hover:mb-20 hover:mt-20;
-
+  hover:scale-110 duration-100 hover:mb-6 hover:mt-6 hover:bg-gray-100;
 }
+
 .articles-list {
   @apply flex content-center;
 }

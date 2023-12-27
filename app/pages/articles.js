@@ -41,7 +41,7 @@ export default function Articles({ articles, page, totalPages }) {
                 <img src={article.image_url} alt={article.title} className="article-image" />
               )}
               <p className="article-info">
-                {(article.author ? `Written by ${article.author.firstname} ${article.author.lastname}` : ' ')}
+                {(article.author ? `Written by ${article.author.username}` : ' ')}
                 {article.created_at ? ` - ${new Date(article.created_at).toLocaleDateString()}` : ' '}
               </p>
               {article.content ? <p className="article-content">{article.content}</p> : ' '}
@@ -65,9 +65,8 @@ export async function getServerSideProps({ query }) {
     .from('articles')
     .select(`
       *,
-      author:contacts (
-        firstname,
-        lastname
+      author:profiles (
+        username
       )
       image_url
     `, { count: 'exact' }) // count the total number of articles
