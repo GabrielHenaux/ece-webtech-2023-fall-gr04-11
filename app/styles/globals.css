@@ -7,48 +7,99 @@
 .wt-title {
   @apply text-3xl font-bold underline mb-10 text-center;
 }
+.wt-subtitle {
+  @apply text-2xl font-sans mb-2 text-center;
+}
+.wt-text {
+  @apply text-xl text-center mb-5 italic;
+}
 /*CSS structure website*/
 .menu {
-  @apply rounded py-1 px-2 hover:bg-red-600 hover:text-slate-100
+  @apply rounded py-1 px-2 hover:bg-red-600 hover:text-slate-100;
 }
 
 .menu-title {
-  @apply rounded py-1 px-2 hover:bg-red-600 hover:text-slate-100
+  @apply rounded py-1 px-2 hover:bg-red-600 hover:text-slate-100;
 }
 
 .header {
-  @apply bg-white text-black p-8 flex border-b-2 border-red-500 justify-between
+  @apply bg-white text-black p-8 flex border-b-2 border-red-500 justify-between;
 }
 
 .footer {
-  @apply flex flex-1 p-8 justify-center items-center text-black bg-white text-center
+  @apply flex flex-1 p-8 justify-center items-center text-black bg-white text-center;
 }
 
 .main {
-  @apply py-10 min-h-screen max-w-full md:max-w-2xl md:mx-auto
+  @apply py-10 min-h-screen min-w-full md:max-w-2xl 
+  md:mx-auto bg-gradient-to-b from-white to-red-500;
 }
 
 /*CSS article*/
 .article-title {
-  @apply font-sans font-bold text-3xl underline text-center mb-5
+  @apply font-sans font-bold text-3xl underline text-center mb-5;
 }
 .article-info {
-  @apply font-sans text-base text-center
+  @apply font-sans text-base text-center font-bold;
+}
+.article-info2 {
+  @apply font-sans text-base mb-3;
 }
 .article-component {
-  @apply rounded-md mb-5 hover:bg-red-400 w-auto
+  @apply flex items-center justify-center rounded-md mb-5 w-1/2 mx-auto 
+  hover:scale-125 duration-300 hover:mb-20 hover:mt-20;
+
+}
+.articles-list {
+  @apply flex content-center;
 }
 .article-image {
-  @apply mx-auto w-3/4
+  @apply mx-auto w-3/4;
+}
+.create-article-button{
+  @apply rounded-md hover:bg-gray-300 w-36 ml-4;
+}
+.article-content {
+  @apply font-sans text-base mt-5 text-center text-2xl;
+}
+.comment-section {
+  @apply mb-5;
+}
+.back-to-articles {
+  @apply hover:underline w-14 mb-5;
+}
+.delete-article-button {
+  @apply rounded-md bg-yellow-500 w-28 hover:bg-yellow-800;
+}
+.edit-article-button {
+  @apply rounded-md hover:bg-gray-300 w-20 mr-4;
+}
+.div-class-edit {
+  @apply flex items-center justify-between mb-5 mt-5 w-1/2 mx-auto;
+}
+.in-main {
+  @apply w-3/4 mx-auto;
+}
+/*CSS comment*/
+.comment-message{
+  @apply text-xl text-center;
+}
+.comment-author {
+  @apply text-center text-slate-600;
+}
+.comment {
+  @apply bg-white rounded-md mb-5 hover:bg-gradient-to-b from-white to-yellow-400;
 }
 
 /*CSS Pagination*/
 .pagination-button {
-  @apply font-sans rounded-md hover:bg-red-600 w-20
+  @apply font-sans rounded-md hover:bg-gray-300 w-20;
 }
 .pagination-component {
-  @apply flex justify-center items-center
+  @apply flex justify-center items-center;
 }
 .pagination-text {
-  @apply text-gray-600 mr-5 ml-5
+  @apply text-gray-600 mr-5 ml-5;
 }
+
+/*NewArticle css*/
