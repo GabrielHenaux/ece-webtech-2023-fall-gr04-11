@@ -4,11 +4,15 @@
 
 /* wt stands for Web Tech */
 
+body {
+  font-family: 'GFS Didot', sans-serif;
+}
+
 .wt-title {
   @apply text-3xl font-bold underline mb-10 text-center;
 }
 .wt-subtitle {
-  @apply text-2xl font-sans mb-2 text-center;
+  @apply text-2xl mb-2 text-center;
 }
 .wt-text {
   @apply text-xl text-center mb-5 italic;
@@ -37,13 +41,13 @@
 
 /*CSS article*/
 .article-title {
-  @apply font-sans font-bold text-3xl underline text-center mb-5;
+  @apply font-bold text-3xl underline text-center mb-5;
 }
 .article-info {
-  @apply font-sans text-base text-center font-bold;
+  @apply text-base text-center font-bold;
 }
 .article-info2 {
-  @apply font-sans text-base mb-3;
+  @apply text-base mb-3;
 }
 .article-component {
   @apply flex items-center justify-center rounded-md mb-5 w-1/2 mx-auto 
@@ -60,7 +64,7 @@
   @apply rounded-md bg-gray-100 hover:bg-gray-200 w-36 ml-4;
 }
 .article-content {
-  @apply font-sans text-base mt-5 text-center text-2xl w-10/12;
+  @apply text-base mt-5 text-center text-2xl w-10/12;
 }
 .comment-section {
   @apply mb-5 rounded-md mt-44;
@@ -88,7 +92,7 @@
   @apply text-xl;
 }
 .comment-author {
-  @apply text-slate-600 italic;
+  @apply text-slate-600 italic my-auto;
 }
 .comment {
   @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full;
@@ -106,7 +110,7 @@
 
 /*CSS Pagination*/
 .pagination-button {
-  @apply font-sans bg-gray-100 rounded-md hover:bg-gray-200 w-20;
+  @apply bg-gray-100 rounded-md hover:bg-gray-200 w-20;
 }
 .pagination-component {
   @apply flex justify-center items-center;
@@ -172,6 +176,9 @@ button[type="submit"]:hover {
 }
 .button-New-Article-Submit:hover {
   @apply bg-red-700;
+}
+.button-search-articles {
+  @apply bg-gray-100 hover:bg-gray-200;
 }
 
 

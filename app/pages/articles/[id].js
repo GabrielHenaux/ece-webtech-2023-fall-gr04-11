@@ -115,13 +115,17 @@ const handleDeleteComment = async (commentId) => {
           
           {comments.map(comment => (
             <div key={comment.id} className="comment">
-              <p className="comment-author">{comment.author ? `${comment.author.username}` : 'Unknown'}</p>
+              <div className="flex items centers justify-between">
+                
+                <p className="comment-author">{comment.author ? `${comment.author.username}` : 'Unknown'}</p>
+                {user && userId === comment.author.id && (
+                  <button onClick={() => handleDeleteComment(comment.id)} className="delete-comment-button">
+                    ✖
+                  </button>
+                )}
+              </div>
               <p className="comment-message">{comment.message}</p>
-              {user && userId === comment.author.id && (
-                <button onClick={() => handleDeleteComment(comment.id)} className="delete-comment-button">
-                  ✖
-                </button>
-              )}
+              
             </div>
           ))}
         </div>

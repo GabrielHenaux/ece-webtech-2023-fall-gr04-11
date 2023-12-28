@@ -13,6 +13,7 @@ export default function Layout({
         <title>{`Webtech ${title && `- ${title}`}`}</title>
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
+        <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet"/>
       </Head>
       <div>
         {<Header/>}

@@ -44,7 +44,7 @@ export default function NewComment() {
   return (
     <Layout title="New Comment" description="Write your comment">
       <div className="in-main">
-        <h1>Write a Comment for Article {id}</h1>id
+        <h1 className="wt-subtitle">Write a Comment for Article {id}</h1>
         <form onSubmit={handleSubmit}>
           <textarea
             value={comment}
