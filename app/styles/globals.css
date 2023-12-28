@@ -9,7 +9,7 @@ body {
 }
 
 .wt-title {
-  @apply text-3xl font-bold mb-10 text-center;
+  @apply text-5xl font-bold mb-10 text-center;
 }
 .wt-subtitle {
   @apply text-2xl mb-2 text-center;
@@ -58,7 +58,7 @@ body {
   @apply flex content-center;
 }
 .article-image {
-  @apply mx-auto w-3/4;
+  @apply mx-auto w-3/4 rounded-lg;
 }
 .create-article-button{
   @apply rounded-md bg-gray-200 hover:bg-gray-300 w-36 ml-4;
