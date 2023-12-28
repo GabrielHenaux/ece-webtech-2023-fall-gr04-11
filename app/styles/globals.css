@@ -50,7 +50,7 @@ body {
   @apply text-base mb-3;
 }
 .article-component {
-  @apply flex items-center justify-center rounded-md mb-5 w-1/2 mx-auto 
+  @apply flex items-center justify-center rounded-md mb-10 mt-10 w-1/2 mx-auto 
   hover:scale-110 duration-100 hover:mb-6 hover:mt-6 hover:bg-gray-100;
 }
 
@@ -180,6 +180,3 @@ button[type="submit"]:hover {
 .button-search-articles {
   @apply bg-gray-100 hover:bg-gray-200;
 }
-
-
-
