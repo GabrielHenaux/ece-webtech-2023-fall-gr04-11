@@ -57,14 +57,20 @@ export default function Page({ articles, topLikedArticles }) {
 
                 {/* Displaying the list of articles or a message if no articles are found */}
                 {articles.length > 0 ? (
-                    <ul className="mx-auto">
+                    <ul className="">
                         {articles.map(article => (
-                            <li key={article.id}>
-                                {/* Link to the individual article */}
+                            <li key={article.id} className="w-1/2 mx-auto">
                                 <Link href={`/articles/${article.id}`}>
-                                    <p>{article.title}</p>
+                                    <div className="result-search-article">
+                                        {/* Link to the individual article */}
+                                        <p>{article.title}</p>
+                                        
+                                    </div>
                                 </Link>
                             </li>
+                            
+                            
+                            
                         ))}
                     </ul>
                 ) : (

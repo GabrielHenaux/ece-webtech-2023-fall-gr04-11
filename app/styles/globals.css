@@ -119,6 +119,11 @@ body {
   @apply text-gray-600 mr-5 ml-5;
 }
 
+/*Search article*/
+.result-search-article {
+  @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full mx-auto;
+}
+
 /*NewArticle css*/
 .selected-image-div {
   @apply bg-gray-100 rounded-md mb-6;
