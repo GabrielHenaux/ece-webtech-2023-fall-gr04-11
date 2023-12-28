@@ -58,7 +58,7 @@ export default function NewArticleForm() {
                     message,
                     category,
                     image_url: selectedImageUrl,
-                    author2: userId, 
+                    author: userId, 
                 },
             ]);
 

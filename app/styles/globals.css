@@ -96,6 +96,10 @@
 .comment-name-section {
   @apply text-black mt-44
 }
+.delete-comment-button {
+  @apply text-sm p-2 rounded-full hover:bg-gray-200;
+}
+
 
 /*CSS Pagination*/
 .pagination-button {

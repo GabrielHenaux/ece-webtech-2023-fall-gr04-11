@@ -31,9 +31,36 @@ export default function ArticlePage({ article, comments}) {
     }
   };
 
+  // function to edit an article
   const handleEdit = () => {
     router.push(`/edit-article/${article.id}`); 
   };
+
+  // function to write a new comment
+  const handleWriteCommentClick = () => {
+    if (user) {
+      router.push(`/new-comment/${article.id}`); 
+    } else {
+      alert('Please log in to write a comment.');
+    }
+  };
+
+  // Function to delete a comment
+const handleDeleteComment = async (commentId) => {
+  if (window.confirm('Are you sure you want to delete this comment?')) {
+    const { error } = await supabase
+      .from('comments')
+      .delete()
+      .match({ id: commentId });
+
+    if (error) {
+      console.error('Error deleting comment:', error);
+    } else {
+      // Refresh the comments or page to reflect the deletion
+      router.replace(router.asPath);
+    }
+  }
+};
 
 
   
@@ -75,15 +102,25 @@ export default function ArticlePage({ article, comments}) {
             </>
           )}
         </div>
+
         <div className="comment-section">
           <h2 className="comment-name-section">Comments ({comments.length}):</h2>
+          <button onClick={handleWriteCommentClick} className="write-comment-button">
+            Write a Comment
+          </button>
           {comments.map(comment => (
             <div key={comment.id} className="comment">
               <p className="comment-author">{comment.author ? `${comment.author.username}` : 'Unknown'}</p>
               <p className="comment-message">{comment.message}</p>
+              {user && userId === comment.author.id && (
+                <button onClick={() => handleDeleteComment(comment.id)} className="delete-comment-button">
+                  ✖
+                </button>
+              )}
             </div>
           ))}
         </div>
+
       </div>
     </Layout>
   )
@@ -113,7 +150,8 @@ export async function getStaticProps(ctx) {
       message,
       created_at,
       author:profiles (
-        username
+        username,
+        id
       )
     `)
     .eq('article', id);

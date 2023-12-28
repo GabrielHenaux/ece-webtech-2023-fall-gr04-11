@@ -50,9 +50,10 @@ export default function Articles({ articles, page, totalPages }) {
                 <img src={article.image_url} alt={article.title} className="article-image" />
               )}
               <p className="article-info">
-                {(article.author ? `Written by ${article.author.username}` : ' ')}
-                {article.created_at ? ` - ${new Date(article.created_at).toLocaleDateString()}` : ' '}
+                {article.author ? `Written by ${article.author.username}` : ' '}
+                {article.created_at ? ` || ${new Date(article.created_at).toLocaleDateString()} - ${new Date(article.created_at).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }).replace(':', 'h')}` : ''}
               </p>
+              
               {article.content ? <p className="article-content">{article.content}</p> : ' '}
             </Link>
           </li>

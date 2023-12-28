@@ -12,7 +12,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 const unsplash = createApi({
     accessKey: 'SFWX_WpAKXydFD4ev2muaeLCtjL5lLqnwDxyLH_BmRs',
 });
-
+ 
 /**
  * EditArticleForm component for editing an article.
  * 
@@ -92,17 +92,11 @@ export default function EditArticleForm({ articleId }) {
         if (error) {
             console.error("Error updating the article:", error);
         } else {
-            /*router.push('/articles');*/
+            router.push('/articles'); // Redirect to the articles list
         }
     };
 
-    /**
-     * Handles the back button click.
-     */
-    const handleBack = () => {
-        /*router.back(); // go back to previous page (article[ID] page)*/
-    };
-
+  
     return (
         <form onSubmit={handleSubmit}>
             {/* Form fields */}
