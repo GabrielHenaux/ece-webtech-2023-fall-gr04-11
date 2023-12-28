@@ -3,17 +3,18 @@ import Layout from '../../components/Layout.js';
 import { useRouter } from 'next/router'; 
 import { createClient } from '@supabase/supabase-js';
 import UserContext from '../../components/UserContext.js';
-import {useContext} from "react";
+import React, { useContext, useState, useEffect } from 'react';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default function ArticlePage({ article, comments}) {
+export default function ArticlePage({ article, comments, likeCount}) {
   const router = useRouter();
   const { user } = useContext(UserContext);
   const userId = user?.id;
- 
+  const [hasLiked, setHasLiked] = useState(false);
+
 
   // function to delete an article
   const handleDelete = async () => {
@@ -46,23 +47,68 @@ export default function ArticlePage({ article, comments}) {
   };
 
   // Function to delete a comment
-const handleDeleteComment = async (commentId) => {
-  if (window.confirm('Are you sure you want to delete this comment?')) {
-    const { error } = await supabase
-      .from('comments')
-      .delete()
-      .match({ id: commentId });
+    const handleDeleteComment = async (commentId) => {
+      if (window.confirm('Are you sure you want to delete this comment?')) {
+        const { error } = await supabase
+          .from('comments')
+          .delete()
+          .match({ id: commentId });
 
-    if (error) {
-      console.error('Error deleting comment:', error);
-    } else {
-      // Refresh the comments or page to reflect the deletion
-      router.replace(router.asPath);
-    }
-  }
-};
+        if (error) {
+          console.error('Error deleting comment:', error);
+        } else {
+          // Refresh the comments or page to reflect the deletion
+          router.replace(router.asPath);
+        }
+      }
+    };
 
 
+
+    // Check if the user has already liked the article
+    useEffect(() => {
+      const checkIfLiked = async () => {
+        if (user) {
+          const { data, error } = await supabase
+            .from('likes')
+            .select('*')
+            .match({ article: article.id, author: userId })
+            .single();
+  
+          if (data) setHasLiked(true);
+        }
+      };
+  
+      checkIfLiked();
+    }, [user, article.id, userId]);
+  
+    // Function to handle liking an article
+    const handleLike = async () => {
+      if (!user) {
+        alert('Please log in to like the article.');
+        return;
+      }
+  
+      if (!hasLiked) {
+        const { error } = await supabase
+          .from('likes')
+          .insert([{ article: article.id, author: userId }]);
+  
+        if (!error) setHasLiked(true);
+      }
+    };
+  
+    // Function to handle unliking an article
+    const handleUnlike = async () => {
+      if (user && hasLiked) {
+        const { error } = await supabase
+          .from('likes')
+          .delete()
+          .match({ article: article.id, author: userId });
+  
+        if (!error) setHasLiked(false);
+      }
+    };
   
 
   return (
@@ -92,6 +138,15 @@ const handleDeleteComment = async (commentId) => {
             <div className="article-content">
               {article.message || ' '} {/* replace null by a blank if there is no content */}
             </div>
+            {hasLiked ? (
+              <button onClick={handleUnlike} className="unlike-button">
+                👎 Unlike
+              </button>
+            ) : (
+              <button onClick={handleLike} className="like-button">
+                👍 Like
+              </button>
+            )}
           </div>
         </div>
         <div className="div-class-edit">
@@ -105,6 +160,7 @@ const handleDeleteComment = async (commentId) => {
               </button>
             </>
           )}
+          <p>{likeCount} Likes</p> {/* Display the number of likes */}
         </div>
 
         <div className="comment-section">
@@ -165,19 +221,29 @@ export async function getStaticProps(ctx) {
     `)
     .eq('article', id);
 
+  // Fetch like count for the article
+  const { data: likeCount, error: likeCountError } = await supabase
+  .from('likes')
+  .select('*', { count: 'exact' })
+  .eq('article', id);
+
   if (articleError) {
-    console.error('Error fetching article:', articleError);
+  console.error('Error fetching article:', articleError);
   }
 
   if (commentsError) {
-    console.error('Error fetching comments:', commentsError);
+  console.error('Error fetching comments:', commentsError);
+  }
 
+  if (likeCountError) {
+  console.error('Error counting likes:', likeCountError);
   }
 
   return {
     props: {
       article: article || {},
-      comments: comments || []
+      comments: comments || [],
+      likeCount: likeCount.length || 0
     }
   };
 }
