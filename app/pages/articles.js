@@ -32,11 +32,13 @@ export default function Articles({ articles, page, totalPages }) {
         
       <h1 className='wt-title'>Ferrari's News Articles</h1>
       
-      <div className="flex items-center justify-center mb-5">
-        <p className="italic font-bold my-5">Create your article just here :</p>
-        <button onClick={handleNewArticleClick} className="create-article-button">
-              New Article
-        </button>
+      <div className="w-1/2 mx-auto">
+        <div className="flex items-center justify-center mb-5 bg-gray-100 rounded-lg">
+          <p className="italic font-bold my-5">Write you own article just here :</p>
+          <button onClick={handleNewArticleClick} className="create-article-button">
+                New Article
+          </button>
+        </div>
       </div>
       <p className="italic font-bold my-5 flex items-center justify-center">Discover our news articles about Ferrari</p>
       <ul className="">
