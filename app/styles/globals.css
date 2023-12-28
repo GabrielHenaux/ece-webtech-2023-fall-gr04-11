@@ -70,7 +70,8 @@ body {
   @apply mb-5 rounded-md mt-44;
 }
 .back-to-articles {
-  @apply hover:bg-gray-200 w-16 mb-5 rounded-md text-center bg-gray-100;
+  @apply hover:bg-gray-200 w-16 mb-5 rounded-md h-6
+  text-center bg-gray-100;
 }
 .delete-article-button {
   @apply rounded-md bg-red-600 w-28 hover:bg-red-800;
@@ -105,6 +106,12 @@ body {
 }
 .write-comment-button {
   @apply bg-gray-100 rounded-md mb-2 w-44 hover:bg-gray-200;
+}
+.like-button {
+  @apply w-1 text-5xl;
+}
+.unlike-button {
+  @apply w-1 text-5xl;
 }
 
 
