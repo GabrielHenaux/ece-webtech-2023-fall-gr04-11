@@ -119,18 +119,31 @@ export default function NewArticleForm() {
                         />
                         
 
-                        <button type="button" onClick={() => searchImages(searchQuery)}>Search Images</button>
-                        <div>
+                        <button type="button" onClick={() => searchImages(searchQuery)} className="bg-gray-100 text-black px-4 py-2 rounded-md text-lg cursor-pointer hover:bg-gray-200 mb-3">
+                            Search Images
+                        </button>
+                        <div className="flex flex-wrap gap-4">
+                            
                             {images.map(image => (
-                                <img key={image.id} src={image.urls.small} alt={image.description} onClick={() => selectImage(image.urls.small)} />
+                                <div
+                                    key={image.id}
+                                    className="w-60 p-2 border border-gray-200 rounded-md cursor-pointer hover:bg-gray-200"
+                                    onClick={() => selectImage(image.urls.small)}
+                                >
+                                    <img key={image.id} src={image.urls.small} alt={image.description} className="w-full h-32 object-cover rounded-md"/>
+                                </div>
+                                
                             ))}
                         </div>
                     </div>
 
                     {selectedImageUrl && (
-                        <div>
-                            <label>Selected Image</label>
-                            <img src={selectedImageUrl} alt="Selected" />
+                        <div className="selected-image-div">
+                            <label className="text-center mt-5 ">Selected Image :</label>
+                            <div className="selected-image-div2">
+                                <img src={selectedImageUrl} alt="Selected" className="w-1/2"/>
+                            </div>
+                            <br></br>
                         </div>
                     )}
 

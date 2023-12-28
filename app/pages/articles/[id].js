@@ -73,7 +73,11 @@ const handleDeleteComment = async (commentId) => {
     >
       <div className="in-main">
         <div className="back-to-articles">
-          <Link href="/articles">← Back</Link>
+          <Link href="/articles">
+            <button>
+              ← Back
+            </button>
+          </Link>
         </div>
         <div className="">
           <h1 className='wt-title'>{article.title || ' '}</h1>
@@ -104,10 +108,11 @@ const handleDeleteComment = async (commentId) => {
         </div>
 
         <div className="comment-section">
-          <h2 className="comment-name-section">Comments ({comments.length}):</h2>
           <button onClick={handleWriteCommentClick} className="write-comment-button">
             Write a Comment
           </button>
+          <h2 className="comment-name-section">Comments ({comments.length}):</h2>
+          
           {comments.map(comment => (
             <div key={comment.id} className="comment">
               <p className="comment-author">{comment.author ? `${comment.author.username}` : 'Unknown'}</p>
