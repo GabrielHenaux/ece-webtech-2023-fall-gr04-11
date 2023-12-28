@@ -58,7 +58,7 @@ body {
   @apply flex content-center;
 }
 .article-image {
-  @apply mx-auto w-3/4 rounded-lg;
+  @apply mx-auto w-3/4 rounded-3xl;
 }
 .create-article-button{
   @apply rounded-md bg-gray-200 hover:bg-gray-300 w-36 ml-4;
