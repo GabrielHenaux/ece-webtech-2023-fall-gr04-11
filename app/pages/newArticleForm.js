@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
-// import { createApi } from 'unsplash-js';
+import { createApi } from 'unsplash-js';
+import UserContext from '../components/UserContext';
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -10,9 +11,9 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Initialize Unsplash client
-/*const unsplash = createApi({
+const unsplash = createApi({
     accessKey: 'SFWX_WpAKXydFD4ev2muaeLCtjL5lLqnwDxyLH_BmRs',
-});*/
+});
 
 
 export default function NewArticleForm() {
@@ -39,10 +40,15 @@ export default function NewArticleForm() {
     const selectImage = (url) => {
         setSelectedImageUrl(url);
     };
+    
+    
+    const { user } = useContext(UserContext);
+    const userId = user?.id;
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Submitting article with data:", { title, message, category, selectedImageUrl });
+        console.log("Submitting article with data:", { title, message, category, selectedImageUrl, authorId: userId });
 
         const { data, error } = await supabase
             .from('articles')
@@ -52,6 +58,7 @@ export default function NewArticleForm() {
                     message,
                     category,
                     image_url: selectedImageUrl,
+                    author2: userId, 
                 },
             ]);
 
@@ -64,6 +71,7 @@ export default function NewArticleForm() {
         }
     };
 
+    
     return (
         <Layout title="New Article" description="Create your article">
             <div className="in-main">
