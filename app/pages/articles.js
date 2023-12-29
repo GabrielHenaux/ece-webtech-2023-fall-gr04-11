@@ -6,9 +6,7 @@ import Pagination from '../components/Pagination';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import UserContext from '../components/UserContext';
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import supabase from "@/components/supabaseClient";
 
 
 

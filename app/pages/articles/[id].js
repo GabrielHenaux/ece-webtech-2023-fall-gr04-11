@@ -4,10 +4,9 @@ import { useRouter } from 'next/router';
 import { createClient } from '@supabase/supabase-js';
 import UserContext from '../../components/UserContext.js';
 import React, { useContext, useState, useEffect } from 'react';
+import supabase from "@/components/supabaseClient";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+
 
 export default function ArticlePage({ article, comments, likeCount}) {
   const router = useRouter();

@@ -7,12 +7,7 @@ import { createClient } from '@supabase/supabase-js';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
-
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import supabase from "@/components/supabaseClient";
 
 export default function Page({ articles, topLikedArticles }) {
     const [search, setSearch] = useState('');

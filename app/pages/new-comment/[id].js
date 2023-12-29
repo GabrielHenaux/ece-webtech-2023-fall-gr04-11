@@ -3,10 +3,8 @@ import { useContext, useState } from 'react';
 import Layout from '../../components/Layout';
 import UserContext from '../../components/UserContext';
 import { createClient } from '@supabase/supabase-js';
+import supabase from "@/components/supabaseClient";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default function NewComment() {
   const router = useRouter();

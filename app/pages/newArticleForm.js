@@ -4,11 +4,8 @@ import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
 import { createApi } from 'unsplash-js';
 import UserContext from '../components/UserContext';
+import supabase from "@/components/supabaseClient";
 
-// Initialize Supabase client
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Initialize Unsplash client
 const unsplash = createApi({

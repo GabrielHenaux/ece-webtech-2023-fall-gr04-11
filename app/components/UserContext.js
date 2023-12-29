@@ -1,6 +1,8 @@
 import {createContext, useState, useEffect} from 'react'
 import {useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import {useRouter} from "next/router";
+import supabase from "@/components/supabaseClient";
+
 
 const Context = createContext()
 
@@ -9,7 +11,6 @@ export default Context
 export const ContextProvider = ({
   children
 }) => {
-  const supabase = useSupabaseClient()
   const supabaseUser = useUser();
   const router = useRouter();
   const [user, setUser] = useState(null);

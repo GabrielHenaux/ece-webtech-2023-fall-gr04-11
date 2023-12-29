@@ -6,9 +6,11 @@ import {createPagesBrowserClient} from "@supabase/auth-helpers-nextjs";
 import {useContext} from "react";
 import UserContext from "@/components/UserContext";
 import {useRouter} from "next/router";
+import supabase from "@/components/supabaseClient";
+
+
 
 export default function Page() {
-  const supabase = createPagesBrowserClient();
   const user = useUser();
   const router = useRouter();
   const {profile, logout} = useContext(UserContext)

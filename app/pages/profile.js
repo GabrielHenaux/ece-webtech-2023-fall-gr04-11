@@ -3,11 +3,10 @@ import { useContext } from 'react';
 import UserContext from '../components/UserContext'
 import Layout from '../components/Layout.js'
 import { useState, useEffect } from 'react';
-import {useSupabaseClient} from "@supabase/auth-helpers-react";
+import supabase from "@/components/supabaseClient";
 
 export default function Page() {
   const router = useRouter();
-  const supabase = useSupabaseClient();
   const { user,profile, logout, setProfile} = useContext(UserContext);
   const [editing, setEditing] = useState(false);
 
