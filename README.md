@@ -57,7 +57,7 @@ This section provides simple instructions for running the application on a local
 
 ## Deliverables 
 
-- Vercel URL: *[Insert your deployed URL here]*
+- Vercel URL: *https://ece-webtech-2023-fall-gr04-11-gpp2.vercel.app/*
 - Supabase project URL: *[Insert your Supabase URL here]*
 
 ## Authors
