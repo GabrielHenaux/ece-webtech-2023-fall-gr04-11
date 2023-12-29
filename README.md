@@ -137,7 +137,7 @@ This section provides simple instructions for running the application on a local
   - Task feedback: The process was smooth and showcased the potential of third-party APIs to elevate the quality of user-generated content.
 
 #### Resource access control
-  - Grade: 2/6
+  - Grade: 4/6
   - Comments: While setting up RLS posed several challenges, including unexpected behaviors, we doubled down on security by implementing additional checks within the application logic to ensure robust access control.
   - Task feedback: The task was arduous and highlighted the importance of thorough testing and validation to achieve a secure data access model.
 
