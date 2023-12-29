@@ -3,15 +3,23 @@ import { useContext } from 'react';
 import UserContext from '../components/UserContext'
 import Layout from '../components/Layout.js'
 import { useState, useEffect } from 'react';
-import supabase from "@/components/supabaseClient";
+
+/**
+ * Renders the user profile page.
+ * The user can modify their profile information such as first name, last name, username and address.
+ * The user can also sign out.
+ * 
+ * @returns {JSX.Element} The profile page component.
+ */
 
 export default function Page() {
-  const router = useRouter();
-  const { user,profile, logout, setProfile} = useContext(UserContext);
-  const [editing, setEditing] = useState(false);
+    //State variables for the information form fields
+    const router = useRouter();
+    const { user,profile, logout, setProfile} = useContext(UserContext);
+    const [editing, setEditing] = useState(false);
 
 
-
+    // Function to edit the profile information when the user clicks on the edit button
     const handleEdit = () => {
         if (editing) {
             handleCancel();
@@ -19,142 +27,144 @@ export default function Page() {
         }
         setEditing(true);
     };
-
+    // Function to cancel the editing of the profile information when the user clicks on the cancel button
     const handleCancel = () => {
         setEditing(false);
     }
-
+    // Function to save the profile information when the user clicks on the save button
     const handleSave = async () => {
         setProfile(profile);
         setEditing(false);
 
     };
-  const onClickLogout = () => {
+
+    // Function to sign out when the user clicks on the sign out button
+    const onClickLogout = () => {
     logout()
-  }
-  return (
-    <Layout
-      title="Profile"
-      description="User profile page"
-      >
-      <h1 className='text-4xl md:text-5xl lg:text-3xl font-bold text-center text-gray-800 uppercase tracking-wide dark:text-white'>
-        Dear, {profile?.username || user?.email}
-      </h1>
-        <h2 className='text-2xl md:text-3xl lg:text-2xl font-bold text-center text-gray-800 uppercase tracking-wide dark:text-white'>
-            Welcome to your profile page
-        </h2>
-        <br/>
-        <br/>
+    }
+    return (
+        <Layout
+        title="Profile"
+        description="User profile page"
+        >
+        <h1 className='text-4xl md:text-5xl lg:text-3xl font-bold text-center text-gray-800 uppercase tracking-wide dark:text-white'>
+            Dear, {profile?.username || user?.email}
+        </h1>
+            <h2 className='text-2xl md:text-3xl lg:text-2xl font-bold text-center text-gray-800 uppercase tracking-wide dark:text-white'>
+                Welcome to your profile page
+            </h2>
+            <br/>
+            <br/>
 
-        <h4 className='text-1xl md:text-1xl lg:text-1xl font-bold text-center text-gray-800 uppercase tracking-wide dark:text-white'>
-            {profile.firstname ===null || profile.lastname === null || profile.address === null || profile.username === null ? ("Please complete your profile") : "Your profile"}
-        </h4>
+            <h4 className='text-1xl md:text-1xl lg:text-1xl font-bold text-center text-gray-800 uppercase tracking-wide dark:text-white'>
+                {profile.firstname ===null || profile.lastname === null || profile.address === null || profile.username === null ? ("Please complete your profile") : "Your profile"}
+            </h4>
 
-        <div className="container mx-auto p-4 dark:text-white">
-            {editing ? (
-                <div className="grid grid-cols-1 gap-5 lg:w-full mx-auto">
-                    <div className="mx-auto min-h-screen flex flex-col items-center ">
-                        <p>
-                            First name: {profile.firstname}
-                        </p>
-                        <input
-                            type="text"
-                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
-                            onChange={(e) => {
-                                profile.firstname = e.target.value;
+            <div className="container mx-auto p-4 dark:text-white">
+                {editing ? (
+                    <div className="grid grid-cols-1 gap-5 lg:w-full mx-auto">
+                        <div className="mx-auto min-h-screen flex flex-col items-center ">
+                            <p>
+                                First name: {profile.firstname}
+                            </p>
+                            <input
+                                type="text"
+                                className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
+                                onChange={(e) => {
+                                    profile.firstname = e.target.value;
+                                    }}
+                                placeholder="First Name"
+                            />
+                            <p>
+                                Last name: {profile.lastname}
+                            </p>
+                            <input
+                                type="text"
+                                className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
+                                onChange={(e) => {
+                                    profile.lastname = e.target.value;
                                 }}
-                            placeholder="First Name"
-                        />
-                        <p>
-                            Last name: {profile.lastname}
-                        </p>
-                        <input
-                            type="text"
-                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
-                            onChange={(e) => {
-                                profile.lastname = e.target.value;
-                            }}
-                            placeholder="Last Name"
-                        />
-                        <p>
-                            Username: {profile.username}
-                        </p>
-                        <input
-                            type="text"
-                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
-                            onChange={(e) => {
-                                profile.username = e.target.value;
+                                placeholder="Last Name"
+                            />
+                            <p>
+                                Username: {profile.username}
+                            </p>
+                            <input
+                                type="text"
+                                className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
+                                onChange={(e) => {
+                                    profile.username = e.target.value;
 
-                            }}
-                            placeholder="Username"
-                        />
-                        <p>
-                            Address: {profile.address}
-                        </p>
-                        <input
-                            type="text"
-                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
-                            onChange={(e) => {
-                                profile.address = e.target.value;
+                                }}
+                                placeholder="Username"
+                            />
+                            <p>
+                                Address: {profile.address}
+                            </p>
+                            <input
+                                type="text"
+                                className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
+                                onChange={(e) => {
+                                    profile.address = e.target.value;
 
-                            }}
-                            placeholder="Address"
-                        />
-                        <div className="flex gap-2">
+                                }}
+                                placeholder="Address"
+                            />
+                            <div className="flex gap-2">
 
 
-                        <button onClick={handleSave}
-                                className="mt-6 text-xl py-3 px-6 mx-auto block bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition duration-200
-                        ">
-                            Save
-                        </button>
+                            <button onClick={handleSave}
+                                    className="mt-6 text-xl py-3 px-6 mx-auto block bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition duration-200
+                            ">
+                                Save
+                            </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-            ) : (
-                <div className="mx-auto w-full max-w-2xl bg-gray-400 rounded-lg shadow-lg p-4 flex flex-col items-center dark:bg-gray-800">
-                    <ul className="text-gray-800 text-lg">
-                        <li>
-                            <div className="rounded-lg mb-2 dark:text-white">
-                                <strong>First Name:</strong> {profile.firstname}
-                            </div>
-                        </li>
-                        <li>
-                            <div className="rounded-lg mb-2 dark:text-white">
-                                <strong>Last Name:</strong> {profile.lastname}
-                            </div>
-                        </li>
-                        <li>
-                            <div className="rounded-lg mb-2 dark:text-white">
-                                <strong>Username:</strong> {profile.username}
-                            </div>
-                        </li>
-                        <li>
-                            <div className="rounded-lg mb-2 dark:text-white">
-                                <strong>Address:</strong> {profile.address}
-                            </div>
-                        </li>
-                    </ul>
+                    
+                ) : (
+                    <div className="mx-auto w-full max-w-2xl bg-gray-400 rounded-lg shadow-lg p-4 flex flex-col items-center dark:bg-gray-800">
+                        <ul className="text-gray-800 text-lg">
+                            <li>
+                                <div className="rounded-lg mb-2 dark:text-white">
+                                    <strong>First Name:</strong> {profile.firstname}
+                                </div>
+                            </li>
+                            <li>
+                                <div className="rounded-lg mb-2 dark:text-white">
+                                    <strong>Last Name:</strong> {profile.lastname}
+                                </div>
+                            </li>
+                            <li>
+                                <div className="rounded-lg mb-2 dark:text-white">
+                                    <strong>Username:</strong> {profile.username}
+                                </div>
+                            </li>
+                            <li>
+                                <div className="rounded-lg mb-2 dark:text-white">
+                                    <strong>Address:</strong> {profile.address}
+                                </div>
+                            </li>
+                        </ul>
 
-                    <button
-                        onClick={handleEdit}
-                        className="mt-4 text-xl py-2 px-4 mx-auto block bg-white text-red-600 font-bold rounded-full shadow-lg hover:bg-gray-200 transition duration-200">
-                        Edit</button>
-                </div>
-            )}
+                        <button
+                            onClick={handleEdit}
+                            className="mt-4 text-xl py-2 px-4 mx-auto block bg-white text-red-600 font-bold rounded-full shadow-lg hover:bg-gray-200 transition duration-200">
+                            Edit</button>
+                    </div>
+                )}
+            </div>
+
+
+            <div className="mb-8">
+            <button
+            className="mt-6 text-xl py-3 px-6 mx-auto block bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition duration-200
+    "
+            onClick={onClickLogout}
+            >
+            Sign out
+            </button>
         </div>
-
-
-        <div className="mb-8">
-        <button
-          className="mt-6 text-xl py-3 px-6 mx-auto block bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition duration-200
-"
-          onClick={onClickLogout}
-        >
-          Sign out
-        </button>
-      </div>
-    </Layout>
-  )
+        </Layout>
+    )
 }
