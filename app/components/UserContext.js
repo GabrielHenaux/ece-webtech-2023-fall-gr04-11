@@ -37,7 +37,7 @@ export const ContextProvider = ({
         };
 
         fetchProfile();
-    }, [supabaseUser, supabase]);
+    }, [supabaseUser]);
 
 
 

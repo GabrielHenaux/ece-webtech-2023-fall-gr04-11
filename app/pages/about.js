@@ -1,5 +1,5 @@
 // Import the Layout component and useEffect hook from React
-import Layout from '../components/Layout.js'
+import Layout from '../components/Layout.js';
 import { useEffect } from 'react';
 
 // Define the Page component
@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <Layout
       title="About Us" // Set the title of the page
-      description="Don't be shy, drop us an email" // Set the description of the page
+      description="Don&apos;t be shy, drop us an email" // Set the description of the page and escape the apostrophe
     >
       <div className="in-main">
         <h1 className='wt-title'>
@@ -34,7 +34,7 @@ export default function Page() {
             What We Offer
           </h2>
           <p className="wt-text">
-            Explore the rich history of Ferrari, from Enzo Ferrari's early days to the creation of world-renowned sports cars. Stay informed about the latest model announcements, Ferrari events, and important news. Join our community to discuss, share tips and photos, and meet fellow Ferrari enthusiasts.
+            Explore the rich history of Ferrari, from Enzo Ferrari&apos;s early days to the creation of world-renowned sports cars. Stay informed about the latest model announcements, Ferrari events, and important news. Join our community to discuss, share tips and photos, and meet fellow Ferrari enthusiasts.
           </p>
         </section>
         <section>
@@ -42,7 +42,7 @@ export default function Page() {
             Our Commitment to Quality
           </h2>
           <p className="wt-text">
-            At Ferrari News, we are committed to delivering accurate information and high-quality resources to help you appreciate and maintain your passion for Ferrari. Join us on Ferrari News and discover everything you need to know about Ferrari. It's the perfect place for enthusiasts of Italian automobiles. We look forward to sharing this Ferrari adventure with you!
+            At Ferrari News, we are committed to delivering accurate information and high-quality resources to help you appreciate and maintain your passion for Ferrari. Join us on Ferrari News and discover everything you need to know about Ferrari. It&apos;s the perfect place for enthusiasts of Italian automobiles. We look forward to sharing this Ferrari adventure with you!
           </p>
         </section>
       </div>

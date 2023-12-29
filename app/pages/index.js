@@ -84,7 +84,7 @@ export default function Page({ articles, topLikedArticles }) {
                     </div>
                 </div>
                 <h1 className="wt-title">Welcome to Ferrari News website</h1>
-                <p className="wt-text">"Passione e potenza italiane dall'inizio alla fine." E.Ferrari </p>
+                <p className="wt-text">&quot;Passione e potenza italiane dall&apos;inizio alla fine.&quot; E.Ferrari </p>
 
                
                 {/* Displaying the search bar */}

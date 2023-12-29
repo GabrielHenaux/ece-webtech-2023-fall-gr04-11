@@ -17,7 +17,7 @@ export default function Contacts({
         .single()
       setContact(data)
     })()
-  }, [id, supabase])
+  }, [id])
   return (
     <Layout
       title="Admin Contacts"

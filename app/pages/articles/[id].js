@@ -226,7 +226,7 @@ export default function ArticlePage({ article, comments, likeCount }) {
 }
 
 // Fetch the article, comments, and like count for the article
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(ctx) {
   const { id } = ctx.params;
 
   // Fetch article in the database that matches the id
@@ -285,22 +285,3 @@ export async function getStaticProps(ctx) {
 
 
 
-
-// Fetch the article ids to generate the static pages
-export async function getStaticPaths() {
-
-  // Fetch all article ids in the database
-  const { data: articles, error } = await supabase
-    .from('articles')
-    .select('id');
-
-  if (error || !articles) {
-    console.error('Error fetching articles:', error);
-    return { paths: [], fallback: false };
-  }
-
-  return {
-    paths: articles.map(article => ({ params: { id: article.id.toString() } })), // return an array of objects with the params containing the article id
-    fallback: false // return 404 if the article id is not found
-  };
-}
