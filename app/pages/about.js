@@ -1,11 +1,13 @@
+// Import the Layout component and useEffect hook from React
 import Layout from '../components/Layout.js'
 import { useEffect } from 'react';
 
+// Define the Page component
 export default function Page() {
   return (
     <Layout
-      title="About Us"
-      description="Don't be shy, drop us an email"
+      title="About Us" // Set the title of the page
+      description="Don't be shy, drop us an email" // Set the description of the page
     >
       <div className="in-main">
         <h1 className='wt-title'>
@@ -47,5 +49,3 @@ export default function Page() {
     </Layout>
   )
 }
-
-
