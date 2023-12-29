@@ -5,6 +5,7 @@ import Layout from '@/components/Layout';
 import { createApi } from 'unsplash-js';
 import UserContext from '../components/UserContext';
 import supabase from "@/components/supabaseClient";
+import Link from 'next/link';
 
 
 // Initialize Unsplash client
@@ -80,6 +81,13 @@ export default function NewArticleForm() {
     return (
         <Layout title="New Article" description="Create your article">
             <div className="in-main">
+                <div className="back-to-articles">
+                    <Link href="/articles">
+                    <button>
+                        ← Back
+                    </button>
+                    </Link>
+                </div>
                 <h1 className="wt-title">Create your article</h1> 
                 <form className="w-full" onSubmit={handleSubmit}> {/* Handle the form submission */}
                     <div>

@@ -4,6 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 import { createApi } from 'unsplash-js';
 import supabase from "@/components/supabaseClient";
 import Layout from './Layout';
+import Link from 'next/link';
 
 // Initialize Unsplash client
 const unsplash = createApi({
@@ -97,6 +98,16 @@ export default function EditArticleForm({ articleId }) {
   
     return (
         <Layout>
+            <div className="in-main">
+                <div className="back-to-articles">
+                <Link href={`/articles/${articleId}`}>
+                <button>
+                    ← Back
+                </button>
+                </Link>
+                </div>
+            </div>
+            
             <h1 className="wt-title">Edit your article</h1>
             <form onSubmit={handleSubmit}>
                 {/* Form fields */}

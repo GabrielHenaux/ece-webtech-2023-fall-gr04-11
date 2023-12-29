@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import Layout from '../../components/Layout';
 import UserContext from '../../components/UserContext';
 import supabase from "@/components/supabaseClient";
+import Link from 'next/link';
 
 
 /**
@@ -52,6 +53,13 @@ export default function NewComment() {
   return (
     <Layout title="New Comment" description="Write your comment">
       <div className="in-main">
+          <div className="back-to-articles">
+              <Link href={`/articles/${id}`}>
+              <button>
+                  ← Back
+              </button>
+              </Link>
+          </div>
         <h1 className="wt-subtitle">Write a Comment for Article {id}</h1>
         <form onSubmit={handleSubmit}>
           <textarea
