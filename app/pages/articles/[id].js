@@ -13,6 +13,7 @@ export default function ArticlePage({ article, comments, likeCount}) {
   const { user } = useContext(UserContext);
   const userId = user?.id;
   const [hasLiked, setHasLiked] = useState(false);
+  const [currentLikeCount, setCurrentLikeCount] = useState(likeCount); 
 
 
   // function to delete an article
@@ -82,32 +83,38 @@ export default function ArticlePage({ article, comments, likeCount}) {
     }, [user, article.id, userId]);
   
     // Function to handle liking an article
-    const handleLike = async () => {
-      if (!user) {
-        alert('Please log in to like the article.');
-        return;
+  const handleLike = async () => {
+    if (!user) {
+      alert('Please log in to like the article.');
+      return;
+    }
+
+    if (!hasLiked) {
+      const { error } = await supabase
+        .from('likes')
+        .insert([{ article: article.id, author: userId }]);
+      
+      if (!error) {
+        setHasLiked(true);
+        setCurrentLikeCount(currentLikeCount + 1); // Update like count state
       }
-  
-      if (!hasLiked) {
-        const { error } = await supabase
-          .from('likes')
-          .insert([{ article: article.id, author: userId }]);
-  
-        if (!error) setHasLiked(true);
+    }
+  };
+
+  // Function to handle unliking an article
+  const handleUnlike = async () => {
+    if (user && hasLiked) {
+      const { error } = await supabase
+        .from('likes')
+        .delete()
+        .match({ article: article.id, author: userId });
+      
+      if (!error) {
+        setHasLiked(false);
+        setCurrentLikeCount(currentLikeCount - 1); // Update like count state
       }
-    };
-  
-    // Function to handle unliking an article
-    const handleUnlike = async () => {
-      if (user && hasLiked) {
-        const { error } = await supabase
-          .from('likes')
-          .delete()
-          .match({ article: article.id, author: userId });
-  
-        if (!error) setHasLiked(false);
-      }
-    };
+    }
+  };
   
 
   return (
@@ -136,8 +143,7 @@ export default function ArticlePage({ article, comments, likeCount}) {
               </button>
               
             )}
-            <p className="dark:text-white">{likeCount} Likes</p> {/* Display the number of likes */}
-
+            <p className="dark:text-white">{currentLikeCount} Likes</p> 
           </div>
           
         </div>
