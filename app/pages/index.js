@@ -123,7 +123,7 @@ export default function Page({ articles, topLikedArticles }) {
                 )}
 
                 {/* Affichage des 3 articles les plus likés */}
-                <div className="my-8 mx-auto w-full">
+                <div className="my-8 mx-auto w-3/4">
                     <h2 className="text-2xl font-semibold mb-4 text-center dark:text-white">Top Liked Articles</h2>
                     {topLikedArticles.length > 0 ? (
                         <Slider {...settings}>

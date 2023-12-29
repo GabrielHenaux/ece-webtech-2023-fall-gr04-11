@@ -1,223 +1,265 @@
+/* ----- Tailwind CSS Configuration ----- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* wt stands for Web Tech */
+/* ----- Global Styles ----- */
 
+/* Font family for the entire body */
 body {
   font-family: 'GFS Didot', sans-serif;
 }
 
+/* Title styling for web tech sections */
 .wt-title {
-  @apply text-5xl font-bold mb-10 text-center
-  dark:text-white;
+  @apply text-5xl font-bold mb-10 text-center dark:text-white;
 }
+
+/* Subtitle styling for web tech sections */
 .wt-subtitle {
-  @apply text-2xl mb-2 text-center
-  dark:text-white;
+  @apply text-2xl mb-2 text-center dark:text-white;
 }
+
+/* General text styling for web tech sections */
 .wt-text {
-  @apply text-xl text-center mb-5 italic
-  dark:text-white;
+  @apply text-xl text-center mb-5 italic dark:text-white;
 }
-/*CSS structure website*/
-.menu {
+
+/* Menu styling */
+.menu, .menu-title {
   @apply rounded py-1 px-2 hover:bg-red-600 hover:text-slate-100;
 }
 
-.menu-title {
-  @apply rounded py-1 px-2 hover:bg-red-600 hover:text-slate-100;
-}
-
+/* Header styling */
 .header {
-  @apply bg-white text-black p-8 flex border-b-2 border-red-500 justify-between
-  dark:bg-gray-900 dark:text-white;
+  @apply bg-white text-black p-8 flex border-b-2 border-red-500 justify-between dark:bg-gray-900 dark:text-white;
 }
 
+/* Footer styling */
 .footer {
-  @apply flex flex-1 p-8 justify-center items-center text-black bg-white text-center
-  dark:bg-gray-900;
+  @apply flex flex-1 p-8 justify-center items-center text-black bg-white text-center dark:bg-gray-900;
 }
 
+/* Main content styling */
 .main {
-  @apply py-10 min-h-screen min-w-full md:max-w-2xl 
-  md:mx-auto dark:bg-gray-900;
+  @apply py-10 min-h-screen min-w-full md:max-w-2xl md:mx-auto dark:bg-gray-900;
 }
 
-/*CSS article*/
+/* ----- Article Styles ----- */
+
+/* Title styling for articles */
 .article-title {
-  @apply font-bold text-3xl text-center mb-5
-  dark:text-white;
-}
-.article-info {
-  @apply text-base text-center font-bold
-  dark:text-white;
-}
-.article-info2 {
-  @apply text-base mb-3
-  dark:text-white;
-}
-.article-component {
-  @apply flex items-center justify-center rounded-md mb-10 mt-10 w-1/2 mx-auto 
-  hover:scale-110 duration-100 hover:mb-6 hover:mt-6 hover:bg-gray-100 dark:hover:bg-gray-800;
+  @apply font-bold text-3xl text-center mb-5 dark:text-white;
 }
 
+/* Information styling for articles */
+.article-info, .article-info2 {
+  @apply text-base text-center font-bold dark:text-white;
+}
+
+/* Styling for article components */
+.article-component {
+  @apply flex items-center justify-center rounded-md mb-10 mt-10 w-1/2 mx-auto hover:scale-110 duration-100 hover:mb-6 hover:mt-6 hover:bg-gray-100 dark:hover:bg-gray-800;
+}
+
+/* Styling for articles list */
 .articles-list {
   @apply flex content-center;
 }
+
+/* Styling for article images */
 .article-image {
   @apply mx-auto w-3/4 rounded-3xl;
 }
-.create-article-button{
-  @apply rounded-md bg-gray-200 hover:bg-gray-300 w-36 ml-4
-  dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white;
+
+/* Styling for the create article button */
+.create-article-button {
+  @apply rounded-md bg-gray-200 hover:bg-gray-300 w-36 ml-4 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white;
 }
+
+/* Styling for article content */
 .article-content {
   @apply text-base mt-5 text-center text-2xl w-10/12 dark:text-white;
 }
+
+/* Styling for comment section */
 .comment-section {
   @apply mb-5 rounded-md mt-44;
 }
+
+/* Styling for back-to-articles button */
 .back-to-articles {
-  @apply hover:bg-gray-200 w-16 mb-5 rounded-md h-6
-  text-center bg-gray-100
-  dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
+  @apply hover:bg-gray-200 w-16 mb-5 rounded-md h-6 text-center bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
 }
+
+/* Styling for delete article button */
 .delete-article-button {
   @apply rounded-md bg-red-600 w-28 hover:bg-red-800 dark:text-white;
 }
+
+/* Styling for edit article button */
 .edit-article-button {
-  @apply rounded-md hover:bg-gray-300 w-20 mr-4 
-  dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
+  @apply rounded-md hover:bg-gray-300 w-20 mr-4 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
 }
+
+/* Styling for article edit class */
 .div-class-edit {
   @apply flex ml-auto mb-5 mt-5 w-1/4;
 }
+
+/* Styling for in-main class */
 .in-main {
   @apply w-3/4 mx-auto;
 }
+
+/* Styling for article content div */
 .div-article-content {
   @apply flex items-center justify-center mx-auto;
 }
-/*CSS comment*/
-.comment-message{
+
+/* ----- Comment Styles ----- */
+
+/* Styling for comment messages */
+.comment-message {
   @apply text-xl;
 }
+
+/* Styling for comment authors */
 .comment-author {
   @apply text-slate-600 italic my-auto dark:text-white;
 }
+
+/* Styling for comments */
 .comment {
-  @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full
-  dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white
-  dark:border-gray-700;
+  @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white dark:border-gray-700;
 }
+
+/* Styling for comment name section */
 .comment-name-section {
   @apply text-black dark:text-white;
 }
+
+/* Styling for delete comment button */
 .delete-comment-button {
   @apply text-sm p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600;
 }
+
+/* Styling for write comment button */
 .write-comment-button {
-  @apply bg-gray-100 rounded-md mb-2 w-44 hover:bg-gray-200
-  dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
+  @apply bg-gray-100 rounded-md mb-2 w-44 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
 }
-.like-button {
-  @apply w-1 text-5xl;
-}
-.unlike-button {
+
+/* Styling for like and unlike buttons */
+.like-button, .unlike-button {
   @apply w-1 text-5xl;
 }
 
+/* ----- Pagination Styles ----- */
 
-/*CSS Pagination*/
+/* Styling for pagination button */
 .pagination-button {
-  @apply bg-gray-100 rounded-md hover:bg-gray-200 w-20 
-  dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
+  @apply bg-gray-100 rounded-md hover:bg-gray-200 w-20 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
 }
+
+/* Styling for pagination component */
 .pagination-component {
   @apply flex justify-center items-center mt-10;
 }
+
+/* Styling for pagination text */
 .pagination-text {
   @apply text-gray-600 mr-5 ml-5 dark:text-gray-200;
 }
 
-/*Search article*/
+/* ----- Search Article Styles ----- */
+
+/* Styling for search result articles */
 .result-search-article {
-  @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full mx-auto 
-  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 dark:text-white;
+  @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full mx-auto dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 dark:text-white;
 }
 
-/*NewArticle css*/
-.selected-image-div {
+/* ----- New Article Styles ----- */
+
+/* Styling for selected image div */
+.selected-image-div, .selected-image-div2 {
   @apply bg-gray-100 rounded-md mb-6 dark:bg-gray-800;
 }
+
+/* Styling for selected image div 2 */
 .selected-image-div2 {
   @apply rounded-md min-h-max w-3/4 flex items-center justify-center mx-auto;
 }
-/* Style du formulaire */
+
+/* ----- Form Styles ----- */
+
+/* Styling for forms */
 form {
   @apply max-w-screen-md mx-auto;
 }
 
-/* Style des champs du formulaire */
+/* Styling for form labels */
 label {
   @apply block mb-2 font-bold;
 }
 
-input,
-select {
+/* Styling for form input and select fields */
+input, select {
   @apply w-full px-3 py-2 border rounded-md mb-4;
 }
+
+/* Styling for form textarea */
 textarea {
   @apply w-full px-3 py-2 border rounded-md mb-4 h-32;
 }
 
-/* Style du bouton de recherche d'image */
+/* Styling for image search button */
 #image-search {
   @apply mr-2;
 }
 
-/* Style de la liste d'images */
+/* Styling for image list */
 #image-list {
   @apply flex flex-wrap gap-4;
 }
 
-/* Style des images de la liste */
+/* Styling for images in the list */
 #image-list img {
   @apply w-24 h-24 object-cover rounded-md cursor-pointer;
 }
 
-/* Style de l'image sélectionnée */
+/* Styling for selected image */
 #selected-image {
   @apply max-w-full mt-4 rounded-md;
 }
 
-/* submit Button */
-button[type="submit"] {
+/* Styling for form submit button */
+button[type="submit"], .button-New-Article-Submit {
   @apply bg-red-600 text-white px-4 py-2 rounded-md text-lg cursor-pointer;
 }
-button[type="submit"]:hover {
+
+/* Styling for form submit button hover state */
+button[type="submit"]:hover, .button-New-Article-Submit:hover {
   @apply bg-red-700;
 }
-.button-New-Article-Submit {
-  @apply bg-red-600 text-white px-4 py-2 rounded-md text-lg cursor-pointer;
-}
-.button-New-Article-Submit:hover {
-  @apply bg-red-700;
-}
+
+/* Styling for search articles button */
 .button-search-articles {
   @apply bg-gray-100 hover:bg-gray-200;
 }
+
+/* Styling for search image button */
 .button-search-image {
-  @apply bg-gray-100 text-black px-4 py-2 rounded-md text-lg cursor-pointer 
-  hover:bg-gray-200 mb-3 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
+  @apply bg-gray-100 text-black px-4 py-2 rounded-md text-lg cursor-pointer hover:bg-gray-200 mb-3 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
 }
 
-/*CSS dark mode*/
+/* ----- Dark Mode Styles ----- */
+
+/* Styling for dark mode switch */
 .theme-switch:checked {
   @apply transition-transform transform translate-x-7 duration-500;
 }
 
+/* Styling for dark mode switch label */
 .theme-switch:checked + .theme-switch-label {
   @apply bg-blue-300;
 }
