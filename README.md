@@ -1,5 +1,5 @@
 # Blogging application - ECE Webtech project
-### Ferrari News : the most easily accessible Ferrari news
+### Ferrari News : The most easily accessible news about the legendary Italian car manufacturer
 
 ## Table of Contents
 
@@ -11,6 +11,7 @@
 - [Authors](#authors)
 - [Evaluation](#evaluation)
 - [Miscellaneous](#miscellaneous)
+- [Contributing](#contributing)
 
 ## Introduction
 
@@ -57,7 +58,7 @@ This section provides simple instructions for running the application on a local
 
 ## Deliverables 
 
-- Vercel URL: *https://ece-webtech-2023-fall-gr04-11-gpp2.vercel.app/*
+- Vercel URL: *https://ferrari-news.vercel.app*
 - Supabase project URL: *[Insert your Supabase URL here]*
 
 ## Authors
@@ -156,9 +157,10 @@ This section provides simple instructions for running the application on a local
   - Task feedback: Implementing this feature would have fostered a stronger sense of community by visually identifying users.
 
 #### Light/dark mode
-  - Grade: 0/2
-  - Comments: The light/dark mode toggle was not implemented within the project timeline, which would have offered a customized viewing experience.
-  - Task feedback: This feature would have been a valuable addition to accommodate user preferences and accessibility needs.
+  - Grade: 2/2
+  - Comments: Successfully implemented a light/dark mode toggle feature, allowing users to select their preferred theme for an optimal reading experience. This feature was integrated thoughtfully, considering the design consistency across the platform and enhancing accessibility.
+  - Task feedback: Adding this functionality was a valuable learning experience in user interface customization. It required careful planning to ensure that the visual transition between modes was seamless and did not detract from the content or user experience.
+
 
 ### Bonus Tasks
 
@@ -182,3 +184,19 @@ The course provided a comprehensive introduction to modern web technologies. The
 
 - [X] We authorize the professors to use our project as an example for the next year students.
 
+---
+## Contributing
+
+*This project was realized as part of the 2023 Web Course at the ECE Engineering School.*
+
+
+For any modifications or improvements to the project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeatureName`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add some feature'`).
+5. Push to the branch (`git push origin feature/YourFeatureName`).
+6. Open a Pull Request for review and potential merging into the main project.
+
+We appreciate your contributions to enhance and expand the capabilities of Ferrari News!
