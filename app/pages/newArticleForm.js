@@ -9,7 +9,7 @@ import supabase from "@/components/supabaseClient";
 
 // Initialize Unsplash client
 const unsplash = createApi({
-    accessKey: 'SFWX_WpAKXydFD4ev2muaeLCtjL5lLqnwDxyLH_BmRs', // Unsplash API key to replace with env. variable for the deployment
+    accessKey: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
 });
 
 

@@ -7,7 +7,7 @@ import Layout from './Layout';
 
 // Initialize Unsplash client
 const unsplash = createApi({
-    accessKey: 'SFWX_WpAKXydFD4ev2muaeLCtjL5lLqnwDxyLH_BmRs',
+    accessKey: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
 });
  
 /**
