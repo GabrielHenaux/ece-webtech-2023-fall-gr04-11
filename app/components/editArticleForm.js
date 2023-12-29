@@ -82,7 +82,7 @@ export default function EditArticleForm({ articleId }) {
                     message, // Update the article content
                     category, // Update the category
                     image_url: selectedImageUrl, // Update the image URL
-                    updated_at: new Date().toISOString(), // Update the timestamp
+                    created_at: new Date().toISOString(), // Update the timestamp
                 },
             ])
             .match({ id: articleId });
