@@ -9,13 +9,16 @@ body {
 }
 
 .wt-title {
-  @apply text-5xl font-bold mb-10 text-center;
+  @apply text-5xl font-bold mb-10 text-center
+  dark:text-white;
 }
 .wt-subtitle {
-  @apply text-2xl mb-2 text-center;
+  @apply text-2xl mb-2 text-center
+  dark:text-white;
 }
 .wt-text {
-  @apply text-xl text-center mb-5 italic;
+  @apply text-xl text-center mb-5 italic
+  dark:text-white;
 }
 /*CSS structure website*/
 .menu {
@@ -27,31 +30,36 @@ body {
 }
 
 .header {
-  @apply bg-white text-black p-8 flex border-b-2 border-red-500 justify-between;
+  @apply bg-white text-black p-8 flex border-b-2 border-red-500 justify-between
+  dark:bg-gray-900 dark:text-white;
 }
 
 .footer {
-  @apply flex flex-1 p-8 justify-center items-center text-black bg-white text-center;
+  @apply flex flex-1 p-8 justify-center items-center text-black bg-white text-center
+  dark:bg-gray-900;
 }
 
 .main {
   @apply py-10 min-h-screen min-w-full md:max-w-2xl 
-  md:mx-auto;
+  md:mx-auto dark:bg-gray-900;
 }
 
 /*CSS article*/
 .article-title {
-  @apply font-bold text-3xl text-center mb-5;
+  @apply font-bold text-3xl text-center mb-5
+  dark:text-white;
 }
 .article-info {
-  @apply text-base text-center font-bold;
+  @apply text-base text-center font-bold
+  dark:text-white;
 }
 .article-info2 {
-  @apply text-base mb-3;
+  @apply text-base mb-3
+  dark:text-white;
 }
 .article-component {
   @apply flex items-center justify-center rounded-md mb-10 mt-10 w-1/2 mx-auto 
-  hover:scale-110 duration-100 hover:mb-6 hover:mt-6 hover:bg-gray-100;
+  hover:scale-110 duration-100 hover:mb-6 hover:mt-6 hover:bg-gray-100 dark:hover:bg-gray-800;
 }
 
 .articles-list {
@@ -61,23 +69,26 @@ body {
   @apply mx-auto w-3/4 rounded-3xl;
 }
 .create-article-button{
-  @apply rounded-md bg-gray-200 hover:bg-gray-300 w-36 ml-4;
+  @apply rounded-md bg-gray-200 hover:bg-gray-300 w-36 ml-4
+  dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white;
 }
 .article-content {
-  @apply text-base mt-5 text-center text-2xl w-10/12;
+  @apply text-base mt-5 text-center text-2xl w-10/12 dark:text-white;
 }
 .comment-section {
   @apply mb-5 rounded-md mt-44;
 }
 .back-to-articles {
   @apply hover:bg-gray-200 w-16 mb-5 rounded-md h-6
-  text-center bg-gray-100;
+  text-center bg-gray-100
+  dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
 }
 .delete-article-button {
-  @apply rounded-md bg-red-600 w-28 hover:bg-red-800;
+  @apply rounded-md bg-red-600 w-28 hover:bg-red-800 dark:text-white;
 }
 .edit-article-button {
-  @apply rounded-md hover:bg-gray-300 w-20 mr-4;
+  @apply rounded-md hover:bg-gray-300 w-20 mr-4 
+  dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
 }
 .div-class-edit {
   @apply flex ml-auto mb-5 mt-5 w-1/4;
@@ -93,19 +104,22 @@ body {
   @apply text-xl;
 }
 .comment-author {
-  @apply text-slate-600 italic my-auto;
+  @apply text-slate-600 italic my-auto dark:text-white;
 }
 .comment {
-  @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full;
+  @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full
+  dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white
+  dark:border-gray-700;
 }
 .comment-name-section {
-  @apply text-black;
+  @apply text-black dark:text-white;
 }
 .delete-comment-button {
   @apply text-sm p-2 rounded-full hover:bg-gray-200;
 }
 .write-comment-button {
-  @apply bg-gray-100 rounded-md mb-2 w-44 hover:bg-gray-200;
+  @apply bg-gray-100 rounded-md mb-2 w-44 hover:bg-gray-200
+  dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
 }
 .like-button {
   @apply w-1 text-5xl;
@@ -117,23 +131,25 @@ body {
 
 /*CSS Pagination*/
 .pagination-button {
-  @apply bg-gray-100 rounded-md hover:bg-gray-200 w-20;
+  @apply bg-gray-100 rounded-md hover:bg-gray-200 w-20 
+  dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
 }
 .pagination-component {
-  @apply flex justify-center items-center;
+  @apply flex justify-center items-center mt-10;
 }
 .pagination-text {
-  @apply text-gray-600 mr-5 ml-5;
+  @apply text-gray-600 mr-5 ml-5 dark:text-gray-200;
 }
 
 /*Search article*/
 .result-search-article {
-  @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full mx-auto;
+  @apply p-4 bg-white border rounded-md mb-5 hover:bg-gray-300 w-full mx-auto 
+  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 dark:text-white;
 }
 
 /*NewArticle css*/
 .selected-image-div {
-  @apply bg-gray-100 rounded-md mb-6;
+  @apply bg-gray-100 rounded-md mb-6 dark:bg-gray-800;
 }
 .selected-image-div2 {
   @apply rounded-md min-h-max w-3/4 flex items-center justify-center mx-auto;
@@ -191,4 +207,17 @@ button[type="submit"]:hover {
 }
 .button-search-articles {
   @apply bg-gray-100 hover:bg-gray-200;
+}
+.button-search-image {
+  @apply bg-gray-100 text-black px-4 py-2 rounded-md text-lg cursor-pointer 
+  hover:bg-gray-200 mb-3 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white;
+}
+
+/*CSS dark mode*/
+.theme-switch:checked {
+  @apply transition-transform transform translate-x-7 duration-500;
+}
+
+.theme-switch:checked + .theme-switch-label {
+  @apply bg-blue-300;
 }

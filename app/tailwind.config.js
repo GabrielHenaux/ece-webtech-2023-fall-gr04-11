@@ -14,6 +14,7 @@ module.exports = {
       },
     },
   },
+  darkMode: 'class',
   plugins: [
     require('tailwindcss-font-inter'),
     require('@tailwindcss/typography'),

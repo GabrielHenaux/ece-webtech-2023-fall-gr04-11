@@ -46,7 +46,7 @@ export default function Header(){
         </Link>
 
         {user && (
-          <li className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50">
+          <li className="rounded py-1 px-2 text-slate-600 border border-cyan-700 hover:bg-cyan-500 hover:text-slate-50 dark:text-slate-300">
             <Link href="/profile" className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6">
               {profile?.username}
               <OutlineUserCircleIcon />
@@ -54,7 +54,7 @@ export default function Header(){
           </li>
         )}
 
-        <li className="py-1 px-2 text-slate-800 hover:text-slate-500">
+        <li className="py-1 px-2 text-slate-800 hover:text-slate-500 dark:text-slate-300 dark:hover:text-slate-50">
           {user ?
             <button onClick={logout} className="flex gap-2 [&_svg]:h-6 [&_svg]:w-6" >
               Sign out

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { createClient } from '@supabase/supabase-js';
 import { createApi } from 'unsplash-js';
 import supabase from "@/components/supabaseClient";
+import Layout from './Layout';
 
 // Initialize Unsplash client
 const unsplash = createApi({
@@ -94,66 +95,84 @@ export default function EditArticleForm({ articleId }) {
 
   
     return (
-        <form onSubmit={handleSubmit}>
-            {/* Form fields */}
-            <div>
-                <label htmlFor="title">Title</label>
-                <input
-                    type="text"
-                    id="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="message">Content</label>
-                <textarea
-                    id="message"
-                    value={message}
-                    onChange={(e) => setContent(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="category">Category</label>
-                <select
-                    id="category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                >
-                    <option value="car">Car</option>
-                    <option value="history">History</option>
-                    <option value="technology">Technology</option>
-                    <option value="race">Race</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            <div>
-                <label htmlFor="image-search">Search Image</label>
-                <input
-                    type="text"
-                    id="image-search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <button type="button" onClick={() => searchImages(searchQuery)}>Search Images</button>
+        <Layout>
+            <h1 className="wt-title">Edit your article</h1>
+            <form onSubmit={handleSubmit}>
+                {/* Form fields */}
                 <div>
-                    {/* Display search results */}
-                    {images.map(image => (
-                        <img key={image.id} src={image.urls.small} alt={image.description} onClick={() => setSelectedImageUrl(image.urls.small)} />
-                    ))}
+                    <label htmlFor="title" className="dark:text-white">Title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                        className="dark:bg-gray-800 dark:border-gray-700 rounded-md dark:text-white"
+                    />
                 </div>
-            </div>
-            {/* Display selected image */}
-            {selectedImageUrl && (
                 <div>
-                    <label>Selected Image</label>
-                    <img src={selectedImageUrl} alt="Selected" />
+                    <label htmlFor="message" className="dark:text-white">Content</label>
+                    <textarea
+                        id="message"
+                        value={message}
+                        onChange={(e) => setContent(e.target.value)}
+                        required
+                        className="dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                    />
                 </div>
-            )}
-            {/* Submit button */}
-            <button type="submit">Update Article</button>
-        </form>
+                <div>
+                    <label htmlFor="category" className="dark:text-white">Category</label>
+                    <select
+                        id="category"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        className="dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                    >
+                        <option value="car">Car</option>
+                        <option value="history">History</option>
+                        <option value="technology">Technology</option>
+                        <option value="race">Race</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="image-search" className="dark:text-white">Search Image</label>
+                    <input
+                        type="text"
+                        id="image-search"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="dark:bg-gray-800 dark:border-gray-700 rounded-md dark:text-white"
+                    />
+                    <button type="button" onClick={() => searchImages(searchQuery)} className="button-search-image">Search Images</button>
+                    <div className="flex flex-wrap gap-4">
+                            
+                        {images.map(image => (
+                            <div
+                                key={image.id}
+                                className="w-60 p-2 border border-gray-200 rounded-md cursor-pointer hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700"
+                                onClick={() => selectImage(image.urls.small)}
+                            >
+                                <img key={image.id} src={image.urls.small} alt={image.description} className="w-full h-32 object-cover rounded-md"/>
+                            </div>
+                            
+                        ))}
+                    </div>
+                </div>
+                {/* Display selected image */}
+                {selectedImageUrl && (
+                    <div className="selected-image-div">
+                        <label className="text-center mt-5 dark:text-white">Selected Image :</label>
+                        <div className="selected-image-div2">
+                            <img src={selectedImageUrl} alt="Selected" className="w-1/2"/>
+                        </div>
+                        <br></br>
+                    </div>
+                )}
+                {/* Submit button */}
+                <button type="submit">Update Article</button>
+            </form>
+        </Layout>
+        
     );
 }

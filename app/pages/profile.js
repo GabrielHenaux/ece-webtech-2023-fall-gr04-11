@@ -37,20 +37,20 @@ export default function Page() {
       title="Profile"
       description="User profile page"
       >
-      <h1 className='text-4xl md:text-5xl lg:text-3xl font-bold text-center text-gray-800 uppercase tracking-wide'>
+      <h1 className='text-4xl md:text-5xl lg:text-3xl font-bold text-center text-gray-800 uppercase tracking-wide dark:text-white'>
         Dear, {profile?.username || user?.email}
       </h1>
-        <h2 className='text-2xl md:text-3xl lg:text-2xl font-bold text-center text-gray-800 uppercase tracking-wide'>
+        <h2 className='text-2xl md:text-3xl lg:text-2xl font-bold text-center text-gray-800 uppercase tracking-wide dark:text-white'>
             Welcome to your profile page
         </h2>
         <br/>
         <br/>
 
-        <h4 className='text-1xl md:text-1xl lg:text-1xl font-bold text-center text-gray-800 uppercase tracking-wide'>
+        <h4 className='text-1xl md:text-1xl lg:text-1xl font-bold text-center text-gray-800 uppercase tracking-wide dark:text-white'>
             {profile.firstname ===null || profile.lastname === null || profile.address === null || profile.username === null ? ("Please complete your profile") : "Your profile"}
         </h4>
 
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 dark:text-white">
             {editing ? (
                 <div className="grid grid-cols-1 gap-5 lg:w-full mx-auto">
                     <div className="mx-auto min-h-screen flex flex-col items-center ">
@@ -59,7 +59,7 @@ export default function Page() {
                         </p>
                         <input
                             type="text"
-                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
                             onChange={(e) => {
                                 profile.firstname = e.target.value;
                                 }}
@@ -70,7 +70,7 @@ export default function Page() {
                         </p>
                         <input
                             type="text"
-                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
                             onChange={(e) => {
                                 profile.lastname = e.target.value;
                             }}
@@ -81,7 +81,7 @@ export default function Page() {
                         </p>
                         <input
                             type="text"
-                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
                             onChange={(e) => {
                                 profile.username = e.target.value;
 
@@ -93,7 +93,7 @@ export default function Page() {
                         </p>
                         <input
                             type="text"
-                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                            className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline dark:bg-gray-800 dark:text-white"
                             onChange={(e) => {
                                 profile.address = e.target.value;
 
@@ -113,25 +113,25 @@ export default function Page() {
                 </div>
                 
             ) : (
-                <div className="mx-auto w-full max-w-2xl bg-gray-400 rounded-lg shadow-lg p-4 flex flex-col items-center">
+                <div className="mx-auto w-full max-w-2xl bg-gray-400 rounded-lg shadow-lg p-4 flex flex-col items-center dark:bg-gray-800">
                     <ul className="text-gray-800 text-lg">
                         <li>
-                            <div className="rounded-lg mb-2">
+                            <div className="rounded-lg mb-2 dark:text-white">
                                 <strong>First Name:</strong> {profile.firstname}
                             </div>
                         </li>
                         <li>
-                            <div className="rounded-lg mb-2">
+                            <div className="rounded-lg mb-2 dark:text-white">
                                 <strong>Last Name:</strong> {profile.lastname}
                             </div>
                         </li>
                         <li>
-                            <div className="rounded-lg mb-2">
+                            <div className="rounded-lg mb-2 dark:text-white">
                                 <strong>Username:</strong> {profile.username}
                             </div>
                         </li>
                         <li>
-                            <div className="rounded-lg mb-2">
+                            <div className="rounded-lg mb-2 dark:text-white">
                                 <strong>Address:</strong> {profile.address}
                             </div>
                         </li>

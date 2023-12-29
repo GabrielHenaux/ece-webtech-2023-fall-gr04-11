@@ -136,7 +136,7 @@ export default function ArticlePage({ article, comments, likeCount}) {
               </button>
               
             )}
-            <p>{likeCount} Likes</p> {/* Display the number of likes */}
+            <p className="dark:text-white">{likeCount} Likes</p> {/* Display the number of likes */}
 
           </div>
           

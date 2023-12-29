@@ -48,6 +48,7 @@ export default function NewComment() {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             required
+            className="dark:bg-gray-800 dark:text-white"
           />
           <button type="submit">Submit Comment</button>
         </form>
