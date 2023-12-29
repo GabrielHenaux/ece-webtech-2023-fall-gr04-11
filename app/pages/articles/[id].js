@@ -1,19 +1,29 @@
 import Link from 'next/link';
 import Layout from '../../components/Layout.js';
-import { useRouter } from 'next/router'; 
-import { createClient } from '@supabase/supabase-js';
+import { useRouter } from 'next/router';
 import UserContext from '../../components/UserContext.js';
 import React, { useContext, useState, useEffect } from 'react';
 import supabase from "@/components/supabaseClient";
 
 
 
-export default function ArticlePage({ article, comments, likeCount}) {
+/**
+ * Renders the article page with the given article, comments, and like count.
+ * Allows users to like and comment the article if they are logged in.
+ * Allows the author of the article to edit and delete it, the button to do so is only displayed if the user is logged in and is the author of the article.
+ * 
+ * @param {Object} props - The component props.
+ * @param {Object} props.article - The article object.
+ * @param {Array} props.comments - The array of comments.
+ * @param {number} props.likeCount - The number of likes for the article.
+ * @returns {JSX.Element} The rendered article page.
+ */
+export default function ArticlePage({ article, comments, likeCount }) {
   const router = useRouter();
   const { user } = useContext(UserContext);
   const userId = user?.id;
   const [hasLiked, setHasLiked] = useState(false);
-  const [currentLikeCount, setCurrentLikeCount] = useState(likeCount); 
+  const [currentLikeCount, setCurrentLikeCount] = useState(likeCount);
 
 
   // function to delete an article
@@ -23,7 +33,7 @@ export default function ArticlePage({ article, comments, likeCount}) {
         .from('articles')
         .delete()
         .match({ id: article.id });
-  
+
       if (error) {
         console.error('Error deleting article:', error);
       } else {
@@ -32,57 +42,59 @@ export default function ArticlePage({ article, comments, likeCount}) {
     }
   };
 
-  // function to edit an article
+  // function to edit an article and redirect to the edit page
   const handleEdit = () => {
-    router.push(`/edit-article/${article.id}`); 
+    router.push(`/edit-article/${article.id}`);
   };
 
-  // function to write a new comment
+  // function to write a new comment and redirect to the new comment page with the article id as a parameter
   const handleWriteCommentClick = () => {
     if (user) {
-      router.push(`/new-comment/${article.id}`); 
+      router.push(`/new-comment/${article.id}`);
     } else {
       alert('Please log in to write a comment.');
     }
   };
 
-  // Function to delete a comment
-    const handleDeleteComment = async (commentId) => {
-      if (window.confirm('Are you sure you want to delete this comment?')) {
-        const { error } = await supabase
-          .from('comments')
-          .delete()
-          .match({ id: commentId });
+  // Function to delete a comment when the user clicks on the delete button 
+  const handleDeleteComment = async (commentId) => {
+    if (window.confirm('Are you sure you want to delete this comment?')) {
 
-        if (error) {
-          console.error('Error deleting comment:', error);
-        } else {
-          // Refresh the comments or page to reflect the deletion
-          router.replace(router.asPath);
-        }
+      // Delete the comment from the database
+      const { error } = await supabase
+        .from('comments')
+        .delete()
+        .match({ id: commentId });
+
+      if (error) {
+        console.error('Error deleting comment:', error);
+      } else {
+        // Refresh the comments or page to reflect the deletion
+        router.replace(router.asPath);
+      }
+    }
+  };
+
+  // Check if the user has already liked the article when the page loads to display the correct liek or unlike button
+  useEffect(() => {
+    const checkIfLiked = async () => {
+      if (user) {
+
+        // Check if the user has already liked the article in the database
+        const { data, error } = await supabase
+          .from('likes')
+          .select('*')
+          .match({ article: article.id, author: userId })
+          .single();
+
+        if (data) setHasLiked(true);
       }
     };
 
+    checkIfLiked();
+  }, [user, article.id, userId]);
 
-
-    // Check if the user has already liked the article
-    useEffect(() => {
-      const checkIfLiked = async () => {
-        if (user) {
-          const { data, error } = await supabase
-            .from('likes')
-            .select('*')
-            .match({ article: article.id, author: userId })
-            .single();
-  
-          if (data) setHasLiked(true);
-        }
-      };
-  
-      checkIfLiked();
-    }, [user, article.id, userId]);
-  
-    // Function to handle liking an article
+  // Function to handle liking an article if the user is not logged in, display an message to ask the user to log in
   const handleLike = async () => {
     if (!user) {
       alert('Please log in to like the article.');
@@ -90,36 +102,40 @@ export default function ArticlePage({ article, comments, likeCount}) {
     }
 
     if (!hasLiked) {
+
+      // Insert the like in the database in the public table 'likes' with the article id and the user id as foreign keys
       const { error } = await supabase
         .from('likes')
         .insert([{ article: article.id, author: userId }]);
-      
-      if (!error) {
-        setHasLiked(true);
+
+      if (!error) { 
+        setHasLiked(true); // Update like state
         setCurrentLikeCount(currentLikeCount + 1); // Update like count state
       }
     }
   };
 
-  // Function to handle unliking an article
+  // Function to handle unliking an article 
   const handleUnlike = async () => {
     if (user && hasLiked) {
+
+      // Delete the like from the database
       const { error } = await supabase
         .from('likes')
         .delete()
         .match({ article: article.id, author: userId });
-      
+
       if (!error) {
-        setHasLiked(false);
+        setHasLiked(false); // Update like state
         setCurrentLikeCount(currentLikeCount - 1); // Update like count state
       }
     }
   };
-  
+
 
   return (
     <Layout
-    
+
       title={article.title || ' '}
       description="Generated by create next app"
     >
@@ -141,13 +157,13 @@ export default function ArticlePage({ article, comments, likeCount}) {
               <button onClick={handleLike} className="like-button">
                 👍
               </button>
-              
+
             )}
-            <p className="dark:text-white">{currentLikeCount} Likes</p> 
+            <p className="dark:text-white">{currentLikeCount} Likes</p>
           </div>
-          
+
         </div>
-        
+
         <div className="">
           <h1 className='wt-title'>{article.title || ' '}</h1>
           <p className="article-info2">
@@ -156,11 +172,11 @@ export default function ArticlePage({ article, comments, likeCount}) {
           </p>
           <div className="flex justify-center">
             {article.image_url && (
-              <img src={article.image_url} alt={article.title} className="article-image"/>
-              
+              <img src={article.image_url} alt={article.title} className="article-image" />
+
             )}
           </div>
-          
+
           <div className="div-article-content">
             <div className="article-content">
               {article.message || ' '} {/* replace null by a blank if there is no content */}
@@ -178,7 +194,7 @@ export default function ArticlePage({ article, comments, likeCount}) {
               </button>
             </>
           )}
-          
+
         </div>
 
         <div className="comment-section">
@@ -186,11 +202,11 @@ export default function ArticlePage({ article, comments, likeCount}) {
             Write a Comment
           </button>
           <h2 className="comment-name-section">Comments ({comments.length}):</h2>
-          
+
           {comments.map(comment => (
             <div key={comment.id} className="comment">
               <div className="flex items centers justify-between">
-                
+
                 <p className="comment-author">{comment.author ? `${comment.author.username}` : 'Unknown'}</p>
                 {user && userId === comment.author.id && (
                   <button onClick={() => handleDeleteComment(comment.id)} className="delete-comment-button">
@@ -199,7 +215,7 @@ export default function ArticlePage({ article, comments, likeCount}) {
                 )}
               </div>
               <p className="comment-message">{comment.message}</p>
-              
+
             </div>
           ))}
         </div>
@@ -209,10 +225,11 @@ export default function ArticlePage({ article, comments, likeCount}) {
   )
 }
 
-
+// Fetch the article, comments, and like count for the article
 export async function getStaticProps(ctx) {
   const { id } = ctx.params;
-  // Fetch article
+
+  // Fetch article in the database that matches the id
   const { data: article, error: articleError } = await supabase
     .from('articles')
     .select(`
@@ -225,7 +242,7 @@ export async function getStaticProps(ctx) {
     .eq('id', id)
     .single();
 
-  // Fetch comments for the article
+  // Fetch comments for the article in the database that matches the article id
   const { data: comments, error: commentsError } = await supabase
     .from('comments')
     .select(`
@@ -239,29 +256,29 @@ export async function getStaticProps(ctx) {
     `)
     .eq('article', id);
 
-  // Fetch like count for the article
+  // Fetch like count for the article in the database that matches the article id
   const { data: likeCount, error: likeCountError } = await supabase
-  .from('likes')
-  .select('*', { count: 'exact' })
-  .eq('article', id);
+    .from('likes')
+    .select('*', { count: 'exact' })
+    .eq('article', id);
 
   if (articleError) {
-  console.error('Error fetching article:', articleError);
+    console.error('Error fetching article:', articleError);
   }
 
   if (commentsError) {
-  console.error('Error fetching comments:', commentsError);
+    console.error('Error fetching comments:', commentsError);
   }
 
   if (likeCountError) {
-  console.error('Error counting likes:', likeCountError);
+    console.error('Error counting likes:', likeCountError);
   }
 
   return {
     props: {
-      article: article || {},
-      comments: comments || [],
-      likeCount: likeCount.length || 0
+      article: article || {}, // return an empty object if there is no article
+      comments: comments || [], // return an empty array if there are no comments
+      likeCount: likeCount.length || 0 // return 0 if there are no likes
     }
   };
 }
@@ -269,8 +286,10 @@ export async function getStaticProps(ctx) {
 
 
 
-
+// Fetch the article ids to generate the static pages
 export async function getStaticPaths() {
+
+  // Fetch all article ids in the database
   const { data: articles, error } = await supabase
     .from('articles')
     .select('id');
@@ -281,7 +300,7 @@ export async function getStaticPaths() {
   }
 
   return {
-    paths: articles.map(article => ({ params: { id: article.id.toString() } })),
-    fallback: false
+    paths: articles.map(article => ({ params: { id: article.id.toString() } })), // return an array of objects with the params containing the article id
+    fallback: false // return 404 if the article id is not found
   };
 }

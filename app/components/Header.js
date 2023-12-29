@@ -1,13 +1,19 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import OutlineUserCircleIcon from '@heroicons/react/24/outline/UserCircleIcon'
-import {useContext, useEffect, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import UserContext from './UserContext'
 
 
 
-export default function Header(){
-  const {user, profile, logout, login} = useContext(UserContext)
+/**
+ * Renders the header component.
+ * @returns {JSX.Element} The rendered header component.
+ */
+export default function Header() {
+
+  // State variable for the user from the UserContext
+  const { user, profile, logout, login } = useContext(UserContext)
 
   return (
     <header className="header">

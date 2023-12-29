@@ -1,6 +1,13 @@
 import Link from 'next/link';
 
-// Component for displaying pagination
+/**
+ * Renders a pagination component with previous and next buttons.
+ *
+ * @param {Object} props - The component props.
+ * @param {number} props.currentPage - The current page number.
+ * @param {number} props.totalPages - The total number of pages.
+ * @returns {JSX.Element} The pagination component.
+ */
 const Pagination = ({ currentPage, totalPages }) => {
   return (
     <div className="pagination-component">

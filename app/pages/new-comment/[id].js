@@ -2,17 +2,26 @@ import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import Layout from '../../components/Layout';
 import UserContext from '../../components/UserContext';
-import { createClient } from '@supabase/supabase-js';
 import supabase from "@/components/supabaseClient";
 
 
+/**
+ * Renders the NewComment form.
+ * Allows users to write and submit comments for a specific article, only if they are logged in.
+ * The users can only submit comments for articles that exist in the database
+ * 
+ * @returns {JSX.Element} The rendered NewComment component.
+ */
+
 export default function NewComment() {
+
+  // State variable for the comment field
   const router = useRouter();
   const { id } = router.query;
   const [comment, setComment] = useState('');
   const { user } = useContext(UserContext);
 
-  console.log(id);
+  // Function to submit the comment and create it in the database
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,6 +30,7 @@ export default function NewComment() {
       return;
     }
 
+    // Insert the comment in the database
     const { data, error } = await supabase
       .from('comments')
       .insert([
@@ -38,7 +48,7 @@ export default function NewComment() {
       router.push(`/articles/${id}`);
     }
   };
- 
+
   return (
     <Layout title="New Comment" description="Write your comment">
       <div className="in-main">
