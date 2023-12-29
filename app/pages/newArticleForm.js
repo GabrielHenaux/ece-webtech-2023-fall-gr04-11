@@ -156,7 +156,6 @@ export default function NewArticleForm() {
                             <br></br>
                         </div>
                     )}
-with the Unsplah API
                     <button type="submit" className="button-New-Article-Submit">Post my Article</button>
                 </form>
             </div>
