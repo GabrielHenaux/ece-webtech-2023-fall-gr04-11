@@ -59,7 +59,7 @@ This section provides simple instructions for running the application on a local
 ## Deliverables 
 
 - Vercel URL: *https://ferrari-news.vercel.app*
-- Supabase project URL: *[Insert your Supabase URL here]*
+- Supabase project URL: https://supabase.com/dashboard/project/ougeuzlashhmrbiwqmqk/settings/api
 
 ## Authors
 
