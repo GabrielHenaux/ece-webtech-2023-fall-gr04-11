@@ -57,7 +57,7 @@ export default function Page() {
             <br/>
 
             <h4 className='text-1xl md:text-1xl lg:text-1xl font-bold text-center text-gray-800 uppercase tracking-wide dark:text-white'>
-                {profile.firstname ===null || profile.lastname === null || profile.address === null || profile.username === null ? ("Please complete your profile") : "Your profile"}
+            {profile ? profile.firstname === null || profile.lastname === null || profile.address === null || profile.username === null ? ("Please complete your profile") : "Your profile" : "Loading..."}
             </h4>
 
             <div className="container mx-auto p-4 dark:text-white">
@@ -65,7 +65,7 @@ export default function Page() {
                     <div className="grid grid-cols-1 gap-5 lg:w-full mx-auto">
                         <div className="mx-auto min-h-screen flex flex-col items-center ">
                             <p>
-                                First name: {profile.firstname}
+                                First name: {profile ? profile.firstname : "Loading..."}
                             </p>
                             <input
                                 type="text"
@@ -76,7 +76,7 @@ export default function Page() {
                                 placeholder="First Name"
                             />
                             <p>
-                                Last name: {profile.lastname}
+                                Last name: {profile ? profile.lastname : "Loading..."}
                             </p>
                             <input
                                 type="text"
@@ -87,7 +87,7 @@ export default function Page() {
                                 placeholder="Last Name"
                             />
                             <p>
-                                Username: {profile.username}
+                                Username: {profile ? profile.username : "Loading..."}
                             </p>
                             <input
                                 type="text"
@@ -127,22 +127,22 @@ export default function Page() {
                         <ul className="text-gray-800 text-lg">
                             <li>
                                 <div className="rounded-lg mb-2 dark:text-white">
-                                    <strong>First Name:</strong> {profile.firstname}
+                                    <strong>First Name:</strong> {profile ? profile.firstname : "Loading..."}
                                 </div>
                             </li>
                             <li>
                                 <div className="rounded-lg mb-2 dark:text-white">
-                                    <strong>Last Name:</strong> {profile.lastname}
+                                    <strong>Last Name:</strong> {profile ? profile.lastname : "Loading..."}
                                 </div>
                             </li>
                             <li>
                                 <div className="rounded-lg mb-2 dark:text-white">
-                                    <strong>Username:</strong> {profile.username}
+                                    <strong>Username:</strong> {profile ? profile.username : "Loading..."}
                                 </div>
                             </li>
                             <li>
                                 <div className="rounded-lg mb-2 dark:text-white">
-                                    <strong>Address:</strong> {profile.address}
+                                    <strong>Address:</strong> {profile ? profile.address : "Loading..."}
                                 </div>
                             </li>
                         </ul>
